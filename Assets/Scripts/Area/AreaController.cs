@@ -11,8 +11,9 @@ public class AreaController : MonoBehaviour, IInteractable
     [SerializeField] private Image _fillImage;
     [SerializeField] private bool _playerEntered;
     private Tween _fillTween;
+    private Coroutine _timerCoroutine;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         Init();
     }
@@ -38,6 +39,10 @@ public class AreaController : MonoBehaviour, IInteractable
         }
     }
 
+    protected bool IsPlayerEntered()
+    {
+        return _playerEntered;
+    }
     public virtual void TriggerArea()
     {
         Debug.Log("base executed");
@@ -45,7 +50,14 @@ public class AreaController : MonoBehaviour, IInteractable
     public void AreaEntered()
     {
         _playerEntered = true;
-        _fillTween = _fillImage.DOFillAmount(1, 1f).OnComplete(TriggerArea);
+        _fillTween = _fillImage.DOFillAmount(1, 1f).OnComplete(() =>
+        {
+            if (_timerCoroutine == null)
+            {
+                _timerCoroutine = StartCoroutine(SpawnTimerCoroutine());
+            }
+        });
+        
     }
 
     public void AreaExit()
@@ -53,5 +65,22 @@ public class AreaController : MonoBehaviour, IInteractable
         _playerEntered = false;
         _fillImage.DOKill();
         _fillImage.fillAmount = 0;
+    }
+
+    private void ResetTimer()
+    {
+        
+    }
+    IEnumerator SpawnTimerCoroutine()
+    {
+        while (IsPlayerEntered())
+        {
+            TriggerArea();
+
+            yield return new WaitForSeconds(1);
+            
+        }
+
+        _timerCoroutine = null;
     }
 }
