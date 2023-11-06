@@ -6,7 +6,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AreaController : MonoBehaviour,IInteractable
+public class AreaController : MonoBehaviour, IInteractable
 {
     [SerializeField] private Image _fillImage;
     [SerializeField] private bool _playerEntered;
@@ -38,9 +38,9 @@ public class AreaController : MonoBehaviour,IInteractable
         }
     }
 
-    private void TriggerArea()
+    public virtual void TriggerArea()
     {
-        
+        Debug.Log("base executed");
     }
     public void AreaEntered()
     {
