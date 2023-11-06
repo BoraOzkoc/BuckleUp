@@ -8,15 +8,15 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: TestMaterial 1
-  m_Shader: {fileID: 4800000, guid: 851f2d9f112af2f4390a3d702e3e6553, type: 3}
+  m_Shader: {fileID: 4800000, guid: 317e3d3b84bf0a741a3e867e27dfa7bb, type: 3}
   m_ValidKeywords:
+  - _MK_OUTLINE_HULL_CLIP
+  m_InvalidKeywords:
   - _MK_ARTISTIC_ANIMATION_STUTTER
   - _MK_ENVIRONMENT_REFLECTIONS_AMBIENT
   - _MK_LIGHT_CEL
-  - _MK_OUTLINE_HULL_CLIP
-  - _MK_WRAPPED_DIFFUSE
-  m_InvalidKeywords:
   - _MK_RECEIVE_SHADOWS
+  - _MK_WRAPPED_DIFFUSE
   - _RECEIVESHADOWS_ON
   - _WRAPPEDLIGHTING_ON
   m_LightmapFlags: 4
@@ -223,7 +223,7 @@ Material:
     - _OutlineFadeMin: 0.25
     - _OutlineNoise: 0
     - _OutlineSize: 5
-    - _OutlineTab: 0
+    - _OutlineTab: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
@@ -263,9 +263,9 @@ Material:
     - _ZTest: 4
     - _ZWrite: 1
     m_Colors:
-    - _AlbedoColor: {r: 0, g: 0.9622642, b: 0.08713802, a: 1}
+    - _AlbedoColor: {r: 0, g: 0.9622641, b: 0.087137826, a: 1}
     - _BaseColor: {r: 0.11583114, g: 1, b: 0.07075471, a: 1}
-    - _Color: {r: 0, g: 0.9622641, b: 0.08713799, a: 1}
+    - _Color: {r: 0, g: 0.9622641, b: 0.087137796, a: 1}
     - _DissolveBorderColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GoochBrightColor: {r: 1, g: 1, b: 1, a: 1}
