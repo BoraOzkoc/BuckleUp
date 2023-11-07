@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,14 @@ public class AmmoCollector : MonoBehaviour
     [SerializeField] private Transform _stackLocation;
 
 
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("triggered");
+        if (other.TryGetComponent<AmmoController>(out AmmoController ammoController))
+        {
+            AddAmmo(ammoController);
+        }
+    }
     public void AddAmmo(AmmoController ammoController)
     {
         if (!ListAlreadyContains(ammoController))

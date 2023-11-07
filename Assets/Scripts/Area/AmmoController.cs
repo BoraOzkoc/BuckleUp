@@ -8,6 +8,7 @@ public class AmmoController : MonoBehaviour, ICollectable
 {
     public Type AmmoType;
     [SerializeField] private List<GameObject> _modelList = new List<GameObject>();
+    private AmmoAnimationController _ammoAnimationController;
     public enum Type
     {
         Small,
@@ -18,6 +19,7 @@ public class AmmoController : MonoBehaviour, ICollectable
     private void Awake()
     {
         ActivateModel();
+        _ammoAnimationController = GetComponent<AmmoAnimationController>();
     }
 
     private void ActivateModel()
@@ -36,6 +38,7 @@ public class AmmoController : MonoBehaviour, ICollectable
 
     public void GetCollected(Transform parent)
     {
+        _ammoAnimationController.StopAnimation();
         transform.SetParent(parent);
         transform.DOLocalMove(Vector3.zero, 0.25f);
     }
@@ -44,5 +47,10 @@ public class AmmoController : MonoBehaviour, ICollectable
     {
         transform.SetParent(parent);
         transform.DOLocalMove(Vector3.zero, 0.25f);
+    }
+
+    private void OnValidate()
+    {
+        ActivateModel();
     }
 }
