@@ -87,5 +87,9 @@ public class AmmoCreationArea : AreaController
 
     public void ResetAmmoList()
     {
+        x_Count = 0;
+        y_Count = 0;
+        z_Count = 0;
+        _ammoList.Clear();
     }
 }
