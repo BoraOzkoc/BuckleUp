@@ -25,7 +25,7 @@ public class AreaController : MonoBehaviour, IInteractable
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
+        if (other.TryGetComponent<AmmoCollector>(out AmmoCollector ammoCollector))
         {
             AreaEntered();
         }
@@ -33,7 +33,7 @@ public class AreaController : MonoBehaviour, IInteractable
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
+        if (other.TryGetComponent<AmmoCollector>(out AmmoCollector ammoCollector))
         {
             AreaExit();
         }
@@ -45,7 +45,6 @@ public class AreaController : MonoBehaviour, IInteractable
     }
     public virtual void TriggerArea()
     {
-        Debug.Log("base executed");
     }
     public void AreaEntered()
     {

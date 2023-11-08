@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -20,7 +21,12 @@ namespace StarterAssets
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
 
+		private void Start()
+		{
+			SprintInput(true);
+		}
 #if ENABLE_INPUT_SYSTEM
+		
 		public void OnMove(InputValue value)
 		{
 			MoveInput(value.Get<Vector2>());

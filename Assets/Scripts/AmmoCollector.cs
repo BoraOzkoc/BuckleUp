@@ -11,10 +11,14 @@ public class AmmoCollector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("triggered");
-        if (other.TryGetComponent<AmmoController>(out AmmoController ammoController))
+        if (other.TryGetComponent<CollectionAreaController>(out CollectionAreaController collectionAreaController))
         {
-            AddAmmo(ammoController);
+           List<AmmoController>tempEmmoList = collectionAreaController.CollectAmmoList();
+
+            for (int i = 0; i < tempEmmoList.Count; i++)
+            {
+                AddAmmo(tempEmmoList[i]);
+            }
         }
     }
     public void AddAmmo(AmmoController ammoController)
