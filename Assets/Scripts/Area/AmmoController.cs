@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Mono.CompilerServices.SymbolWriter;
 using UnityEngine;
 
 public class AmmoController : MonoBehaviour, ICollectable
@@ -16,9 +17,13 @@ public class AmmoController : MonoBehaviour, ICollectable
         Heavy
     }
 
+    public void PreapareAmmo(int index)
+    {
+        AmmoType = (Type)index;
+        ActivateModel();
+    }
     private void Awake()
     {
-        ActivateModel();
         _ammoAnimationController = GetComponent<AmmoAnimationController>();
     }
 

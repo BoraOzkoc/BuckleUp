@@ -3,16 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.Mime;
 using DG.Tweening;
+using Mono.CompilerServices.SymbolWriter;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class AreaController : MonoBehaviour, IInteractable
 {
+    public Type AmmoType;
     [SerializeField] private Image _fillImage;
-    [SerializeField] private bool _playerEntered;
+    private bool _playerEntered,_isLocked;
     private Tween _fillTween;
     private Coroutine _timerCoroutine;
 
+    public enum Type
+    {
+        Small,
+        Medium,
+        Heavy
+    }
     protected virtual void Awake()
     {
         Init();
@@ -65,14 +73,10 @@ public class AreaController : MonoBehaviour, IInteractable
         _fillImage.DOKill();
         _fillImage.fillAmount = 0;
     }
-
-    private void ResetTimer()
-    {
-        
-    }
+    
     IEnumerator SpawnTimerCoroutine()
     {
-        while (IsPlayerEntered())
+        while ( IsPlayerEntered())
         {
             TriggerArea();
 

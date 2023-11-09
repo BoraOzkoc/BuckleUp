@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AmmoCreationArea : AreaController
 {
-    [SerializeField] private AmmoSO _ammoType;
+    [SerializeField] private AmmoController _ammoPrefab;
     [SerializeField] private Transform _spawnLocation;
     [SerializeField] private List<AmmoController> _ammoList = new List<AmmoController>();
 
@@ -48,8 +48,6 @@ public class AmmoCreationArea : AreaController
     {
         if (_maxSpawn > _ammoList.Count)
         {
-            bool playerEntered = IsPlayerEntered();
-
             Vector3 SpawnPos = _spawnLocation.position;
 
             if (x_Count >= _limits.x)
@@ -79,10 +77,13 @@ public class AmmoCreationArea : AreaController
     private void SpawnAmmo(Vector3 spawnPos)
     {
         AmmoController tempAmmo =
-            Instantiate(_ammoType.AmmoPrefab, spawnPos, Quaternion.identity, _spawnLocation)
-                .GetComponent<AmmoController>();
+            Instantiate(_ammoPrefab, spawnPos, Quaternion.identity, _spawnLocation);
         
         if (!_ammoList.Contains(tempAmmo)) _ammoList.Add(tempAmmo);
+
+        int ammoTypeIndex = (int)AmmoType;
+
+        tempAmmo.PreapareAmmo(ammoTypeIndex);
     }
 
     public void ResetAmmoList()
