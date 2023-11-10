@@ -11,7 +11,7 @@ public class AreaController : MonoBehaviour, IInteractable
 {
     public Type AmmoType;
     [SerializeField] private Image _fillImage;
-    private bool _playerEntered,_isLocked;
+    private bool _playerEntered, _isLocked;
     private Tween _fillTween;
     private Coroutine _timerCoroutine;
 
@@ -21,6 +21,7 @@ public class AreaController : MonoBehaviour, IInteractable
         Medium,
         Heavy
     }
+
     protected virtual void Awake()
     {
         Init();
@@ -29,8 +30,8 @@ public class AreaController : MonoBehaviour, IInteractable
     private void Init()
     {
         _fillImage.fillAmount = 0;
-
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<AmmoCollector>(out AmmoCollector ammoCollector))
@@ -51,9 +52,11 @@ public class AreaController : MonoBehaviour, IInteractable
     {
         return _playerEntered;
     }
+
     public virtual void TriggerArea()
     {
     }
+
     public void AreaEntered()
     {
         _playerEntered = true;
@@ -64,7 +67,6 @@ public class AreaController : MonoBehaviour, IInteractable
                 _timerCoroutine = StartCoroutine(SpawnTimerCoroutine());
             }
         });
-        
     }
 
     public void AreaExit()
@@ -73,15 +75,14 @@ public class AreaController : MonoBehaviour, IInteractable
         _fillImage.DOKill();
         _fillImage.fillAmount = 0;
     }
-    
+
     IEnumerator SpawnTimerCoroutine()
     {
-        while ( IsPlayerEntered())
+        while (IsPlayerEntered())
         {
             TriggerArea();
 
             yield return new WaitForSeconds(1);
-            
         }
 
         _timerCoroutine = null;
