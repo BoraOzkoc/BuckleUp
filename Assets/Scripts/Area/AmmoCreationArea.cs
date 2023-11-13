@@ -5,6 +5,14 @@ using UnityEngine;
 
 public class AmmoCreationArea : AreaController
 {
+    [System.Serializable]
+    public class SaveData
+    {
+        public bool IsLocked;
+        public string name;
+    }
+    
+    
     [SerializeField] private AmmoController _ammoPrefab;
     [SerializeField] private Transform _spawnLocation;
     [SerializeField] private List<AmmoController> _ammoList = new List<AmmoController>();
@@ -24,18 +32,23 @@ public class AmmoCreationArea : AreaController
     private Coroutine _spawnCoroutine;
     private bool isLocked;
 
-    public void SetID(int tempID)
+    public void GetLoaded(bool lockState,string name)
     {
-        _id = tempID;
+        SetLock(lockState);
+        gameObject.name = name;
     }
     public List<AmmoController> GetAmmoList()
     {
         return _ammoList;
     }
 
-    public bool Islocked()
+    public bool IsLocked()
     {
         return isLocked;
+    }
+    public void SetLock(bool lockState)
+    {
+        isLocked = lockState;
     }
     private void OnValidate()
     {

@@ -12,56 +12,54 @@ using UnityEngine.UI;
 
 public class SaveManager : MonoBehaviour
 {
-    public List<AmmoCreationArea> SaveList = new List<AmmoCreationArea>();
-    private IDataService DataService = new JsonDataService();
-    private bool EncryptionEnabled;
+    [System.Serializable]
+    public class AreaList
+    {
+        public AmmoCreationArea.SaveData[] AreaData;
+    }
 
+    public List<AmmoCreationArea> SaveList = new List<AmmoCreationArea>();
     private void OnApplicationFocus(bool hasFocus)
     {
         if (!hasFocus)
         {
-             DataService.SaveData("/savedata.json", SaveList[0]);
-            //  AmmoCreationArea data = DataService.LoadData<AmmoCreationArea>("/savedata.json");
-            //
-            // Debug.Log(JsonConvert.SerializeObject(data, Formatting.Indented));
+            SaveAreas();
         }
     }
 
-    public void SerializeJson()
+    private void Start()
     {
-        if (DataService.SaveData("/savedata.json", SaveList[0]))
+        LoadAreas();
+    }
+
+    public AreaList areaList = new AreaList();
+
+    private void SaveAreas()
+    {
+        for (int i = 0; i < SaveList.Count; i++)
         {
-            try
+            areaList.AreaData[i].IsLocked = SaveList[i].IsLocked();
+            areaList.AreaData[i].name =  SaveList[i].gameObject.name;
+        }
+
+        string json = JsonUtility.ToJson(areaList);
+        SaveSystem.Save(json);
+    }
+
+    private void LoadAreas()
+    {
+        string saveString = SaveSystem.Load();
+        if (saveString != null) {
+
+            AmmoCreationArea.SaveData[] saveData = new AmmoCreationArea.SaveData[SaveList.Count];
+            saveData = JsonUtility.FromJson<AmmoCreationArea.SaveData[]>(saveString);
+
+            for (int i = 0; i < SaveList.Count; i++)
             {
-                AmmoCreationArea data = DataService.LoadData<AmmoCreationArea>("/savedata.json");
-                string test = "Loaded from file:\r\n" + JsonConvert.SerializeObject(data, Formatting.Indented);
-                Debug.Log(test);
+                SaveList[i].GetLoaded(saveData[i].IsLocked, saveData[i].name);
+           
             }
-            catch (Exception e)
-            {
-                Debug.LogError($"Could not read file! Show something on the UI here!");
-                //InputField.text = "<color=#ff0000>Error reading save file!</color>";
-            }
-        }
-        else
-        {
-            Debug.LogError("Could not save file! Show something on the UI about it!");
-            //InputField.text = "<color=#ff0000>Error saving data!</color>";
-        }
-    }
-
-    private void Awake()
-    {
-        //SourceDataText.SetText(JsonConvert.SerializeObject(AmmoCreationArea, Formatting.Indented));
-    }
-
-    public void ClearData()
-    {
-        string path = Application.persistentDataPath + "/savedata.json";
-        if (File.Exists(path))
-        {
-            File.Delete(path);
-            //InputField.text = "Loaded data goes here";
+        } else {
         }
     }
 }

@@ -1697,6 +1697,30 @@ MonoBehaviour:
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
+--- !u!114 &1839740771 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4967139768398496560, guid: 49300bd10f357aa46a10585e2e594654,
+    type: 3}
+  m_PrefabInstance: {fileID: 1974217825}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05a7e949ce7d63c4291753e8ff09f08d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1940511268 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2717143855807875889, guid: 6763dcae59175354ba639507ae604794,
+    type: 3}
+  m_PrefabInstance: {fileID: 549569423}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05a7e949ce7d63c4291753e8ff09f08d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1974217825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1838,16 +1862,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: SaveManager
       objectReference: {fileID: 0}
-    - target: {fileID: 7902318473515701782, guid: 80457cb2a96698f43914477414fae97d,
-        type: 3}
-      propertyPath: SaveList.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7902318473515701782, guid: 80457cb2a96698f43914477414fae97d,
+    - target: {fileID: 7180171853992349936, guid: 80457cb2a96698f43914477414fae97d,
         type: 3}
       propertyPath: SaveList.Array.data[0]
       value: 
       objectReference: {fileID: 459893126}
+    - target: {fileID: 7180171853992349936, guid: 80457cb2a96698f43914477414fae97d,
+        type: 3}
+      propertyPath: SaveList.Array.data[1]
+      value: 
+      objectReference: {fileID: 1940511268}
+    - target: {fileID: 7180171853992349936, guid: 80457cb2a96698f43914477414fae97d,
+        type: 3}
+      propertyPath: SaveList.Array.data[2]
+      value: 
+      objectReference: {fileID: 1839740771}
+    - target: {fileID: 7180171853992349936, guid: 80457cb2a96698f43914477414fae97d,
+        type: 3}
+      propertyPath: areaList.AreaData.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80457cb2a96698f43914477414fae97d, type: 3}
 --- !u!1001 &2083508713
