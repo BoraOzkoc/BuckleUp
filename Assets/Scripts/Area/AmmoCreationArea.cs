@@ -20,18 +20,22 @@ public class AmmoCreationArea : AreaController
     [Header("Grid Padding")] [SerializeField]
     private int _padding;
 
-    private int x_Count, y_Count, z_Count;
+    private int x_Count, y_Count, z_Count,_id;
     private Coroutine _spawnCoroutine;
+    private bool isLocked;
 
-    protected override void Awake()
+    public void SetID(int tempID)
     {
-        base.Awake();
-        //_tempObj = Instantiate(gameObject, transform);
+        _id = tempID;
     }
-
     public List<AmmoController> GetAmmoList()
     {
         return _ammoList;
+    }
+
+    public bool Islocked()
+    {
+        return isLocked;
     }
     private void OnValidate()
     {
@@ -78,7 +82,7 @@ public class AmmoCreationArea : AreaController
     {
         AmmoController tempAmmo =
             Instantiate(_ammoPrefab, spawnPos, Quaternion.identity, _spawnLocation);
-        
+
         if (!_ammoList.Contains(tempAmmo)) _ammoList.Add(tempAmmo);
 
         int ammoTypeIndex = (int)AmmoType;
