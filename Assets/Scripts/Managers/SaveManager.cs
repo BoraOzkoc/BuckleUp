@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
 using Unity.Mathematics;
@@ -15,10 +16,11 @@ public class SaveManager : MonoBehaviour
     [System.Serializable]
     public class AreaList
     {
-        public AmmoCreationArea.SaveData[] AreaData;
+        public List<AmmoCreationArea.SaveData> AreaData;
     }
 
     public List<AmmoCreationArea> SaveList = new List<AmmoCreationArea>();
+
     private void OnApplicationFocus(bool hasFocus)
     {
         if (!hasFocus)
@@ -39,7 +41,7 @@ public class SaveManager : MonoBehaviour
         for (int i = 0; i < SaveList.Count; i++)
         {
             areaList.AreaData[i].IsLocked = SaveList[i].IsLocked();
-            areaList.AreaData[i].name =  SaveList[i].gameObject.name;
+            areaList.AreaData[i].Name = SaveList[i].gameObject.name;
         }
 
         string json = JsonUtility.ToJson(areaList);
@@ -49,17 +51,23 @@ public class SaveManager : MonoBehaviour
     private void LoadAreas()
     {
         string saveString = SaveSystem.Load();
-        if (saveString != null) {
 
-            AmmoCreationArea.SaveData[] saveData = new AmmoCreationArea.SaveData[SaveList.Count];
-            saveData = JsonUtility.FromJson<AmmoCreationArea.SaveData[]>(saveString);
-
+        if (saveString != null)
+        {
+            AreaList itemList = JsonUtility.FromJson<AreaList>(saveString);
+            areaList.AreaData = itemList.AreaData;
+            
+            
             for (int i = 0; i < SaveList.Count; i++)
             {
-                SaveList[i].GetLoaded(saveData[i].IsLocked, saveData[i].name);
-           
+                AmmoCreationArea.SaveData tempObj = areaList.AreaData[i];
+
+                SaveList[i].GetLoaded(tempObj.IsLocked,tempObj.Name);
+                
             }
-        } else {
+        }
+        else
+        {
         }
     }
 }

@@ -1,1 +1,0 @@
-{"AreaData":[{"IsLocked":false,"name":"SimpleAmmoArea"},{"IsLocked":false,"name":"MediumAmmoArea"},{"IsLocked":false,"name":"HeavyAmmoArea"}]}

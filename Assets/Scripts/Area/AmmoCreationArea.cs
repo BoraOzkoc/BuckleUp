@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class AmmoCreationArea : AreaController
 {
@@ -9,7 +10,7 @@ public class AmmoCreationArea : AreaController
     public class SaveData
     {
         public bool IsLocked;
-        public string name;
+        public string Name;
     }
     
     
