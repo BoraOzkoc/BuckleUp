@@ -1,9 +1,35 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DriveThruManager : MonoBehaviour
 {
-    [SerializeField] private List<Transform> _vehicleList = new List<Transform>();
-    
+    [SerializeField] private List<VehicleController> _vehicleList = new List<VehicleController>();
+    [SerializeField] private Transform _start, _end, _paymentLocation;
+    private VehicleSpawner _vehicleSpawner;
+
+    private void Awake()
+    {
+        _vehicleSpawner = GetComponent<VehicleSpawner>();
+    }
+
+    public VehicleSpawner GetVehicleSpawner()
+    {
+        return _vehicleSpawner;
+    }
+
+    public void StartConvoy()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+           VehicleController spawnedVehicle = _vehicleSpawner.PullFromList(_start,_end);
+           _vehicleList.Add(spawnedVehicle);
+        }
+    }
+
+    public void RemoveFromList(VehicleController vehicleController)
+    {
+        _vehicleList.Remove(vehicleController);
+    }
 }

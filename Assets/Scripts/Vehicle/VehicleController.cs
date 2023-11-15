@@ -1,13 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Mono.CompilerServices.SymbolWriter;
 using UnityEngine;
 
 public class VehicleController : MonoBehaviour
 {
     public Type VehicleType;
-    [SerializeField] private List<GameObject> modelList =new List<GameObject>() ;
+    [SerializeField] private List<GameObject> modelList = new List<GameObject>();
+
     public enum Type
     {
         Small,
@@ -21,8 +23,6 @@ public class VehicleController : MonoBehaviour
         ActivateModel();
     }
 
-    
-
     public void Deactivate()
     {
         gameObject.SetActive(false);
@@ -32,6 +32,16 @@ public class VehicleController : MonoBehaviour
     {
         transform.position = targetPos;
     }
+
+    public void TurnVehicle(Vector3 pos)
+    {
+        transform.LookAt(pos);
+    }
+
+    public void DriveTo(Vector3 pos)
+    {
+        transform.DOMove(pos, 0.5f).SetEase(Ease.InOutQuart);
+    }
     private void ActivateModel()
     {
         int index = (int)VehicleType;
@@ -39,6 +49,8 @@ public class VehicleController : MonoBehaviour
         {
             modelList[i].SetActive(false);
         }
+
+        gameObject.SetActive(true);
         modelList[index].SetActive(true);
     }
 }

@@ -13,10 +13,17 @@ public class VehicleSpawner : MonoBehaviour
     [SerializeField] private VehicleController _vehiclePrefab;
     [SerializeField] private int _vehiclePoolAmount;
     [SerializeField] private bool smallAmmoUnlocked, mediumAmmoUnlocked, heavyAmmoUnlocked;
+    private DriveThruManager _driveThruManager;
+
+    private void Awake()
+    {
+        _driveThruManager = GetComponent<DriveThruManager>();
+    }
 
     private void Start()
     {
         SpawnVehicles();
+        _driveThruManager.StartConvoy();
     }
 
     public void UnlockVehicle(int index)
@@ -50,11 +57,14 @@ public class VehicleSpawner : MonoBehaviour
         }
     }
 
-    private void PullFromList()
+    public VehicleController PullFromList(Transform startLocation, Transform endLocation)
     {
         VehicleController vehicleController = deactivatedVehicleList[0];
         deactivatedVehicleList.Remove(deactivatedVehicleList[0]);
         vehicleController.Activate(PickRandomVehicle());
+        vehicleController.MoveVehicle(startLocation.position);
+        vehicleController.TurnVehicle(endLocation.position);
+        return vehicleController;
     }
 
     private int PickRandomVehicle()
@@ -67,7 +77,7 @@ public class VehicleSpawner : MonoBehaviour
         return number;
     }
 
-    private void PushToList(VehicleController vehicleController)
+    public void PushToList(VehicleController vehicleController)
     {
         if (activatedVehicleList.Contains(vehicleController))
         {
