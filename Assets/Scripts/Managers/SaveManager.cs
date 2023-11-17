@@ -18,15 +18,18 @@ public class SaveManager : MonoBehaviour
     {
         public List<AmmoCreationArea.SaveData> AreaData;
     }
+
     public class Resource
     {
         public int Gold;
     }
+
     public List<AmmoCreationArea> SaveList = new List<AmmoCreationArea>();
     public AreaList areaList = new AreaList();
     [SerializeField] private ResourceManager _resourceManager;
 
     private Resource _resource = new Resource();
+
     private void OnApplicationFocus(bool hasFocus)
     {
         if (!hasFocus)
@@ -43,12 +46,13 @@ public class SaveManager : MonoBehaviour
 
     private void SaveResource()
     {
-       int amount = _resourceManager.GetResourceAmount();
-       _resource.Gold = amount;
-       
-       string json = JsonUtility.ToJson(_resource);
-       SaveSystem.Save(json);
+        int amount = _resourceManager.GetResourceAmount();
+        _resource.Gold = amount;
+
+        string json = JsonUtility.ToJson(_resource);
+        SaveSystem.Save(json);
     }
+
     private void SaveAreas()
     {
         for (int i = 0; i < SaveList.Count; i++)
@@ -68,12 +72,17 @@ public class SaveManager : MonoBehaviour
         LoadAreas(saveString);
         LoadResources(saveString);
     }
+
     private void LoadResources(string saveString)
     {
-        Resource resource = JsonUtility.FromJson<Resource>(saveString);
-        _resource.Gold = resource.Gold;
-        _resourceManager.Load(_resource);
+        if (saveString != null)
+        {
+            Resource resource = JsonUtility.FromJson<Resource>(saveString);
+            _resource.Gold = resource.Gold;
+            _resourceManager.Load(_resource);
+        }
     }
+
     private void LoadAreas(string saveString)
     {
         if (saveString != null)
