@@ -35,7 +35,7 @@ public class SaveManager : MonoBehaviour
         if (!hasFocus)
         {
             SaveAreas();
-            SaveResource();
+            //SaveResource();
         }
     }
 
@@ -87,15 +87,18 @@ public class SaveManager : MonoBehaviour
     {
         if (saveString != null)
         {
-            AreaList itemList = JsonUtility.FromJson<AreaList>(saveString);
-            areaList.AreaData = itemList.AreaData;
-
-
-            for (int i = 0; i < SaveList.Count; i++)
+            if (areaList.AreaData.Count == SaveList.Count)
             {
-                AmmoCreationArea.SaveData tempObj = areaList.AreaData[i];
+                AreaList itemList = JsonUtility.FromJson<AreaList>(saveString);
+                areaList.AreaData = itemList.AreaData;
 
-                SaveList[i].GetLoaded(tempObj.IsLocked, tempObj.Name);
+
+                for (int i = 0; i < SaveList.Count; i++)
+                {
+                    AmmoCreationArea.SaveData tempObj = areaList.AreaData[i];
+
+                    SaveList[i].GetLoaded(tempObj.IsLocked, tempObj.Name);
+                }
             }
         }
         else
