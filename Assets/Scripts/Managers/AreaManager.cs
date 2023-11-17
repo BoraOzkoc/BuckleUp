@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AreaManager : MonoBehaviour
@@ -8,7 +9,20 @@ public class AreaManager : MonoBehaviour
     [SerializeField] private DriveThruManager _driveThruManager;
     [SerializeField] private List<AmmoCreationArea> areaList = new List<AmmoCreationArea>();
 
-    private void CheckLock(AmmoCreationArea ammoCreationArea)
+    private void Awake()
+    {
+        Init();
+    }
+
+    private void Init()
+    {
+        foreach (AmmoCreationArea creationArea in areaList)
+        {
+            creationArea.Init(this);
+        }
+    }
+
+    public void CheckLock(AmmoCreationArea ammoCreationArea)
     {
         VehicleSpawner vehicleSpawner = _driveThruManager.GetVehicleSpawner();
         int index = 0;

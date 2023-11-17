@@ -18,24 +18,37 @@ public class SaveManager : MonoBehaviour
     {
         public List<AmmoCreationArea.SaveData> AreaData;
     }
-
+    public class Resource
+    {
+        public int Gold;
+    }
     public List<AmmoCreationArea> SaveList = new List<AmmoCreationArea>();
+    public AreaList areaList = new AreaList();
+    [SerializeField] private ResourceManager _resourceManager;
 
+    private Resource _resource = new Resource();
     private void OnApplicationFocus(bool hasFocus)
     {
         if (!hasFocus)
         {
             SaveAreas();
+            SaveResource();
         }
     }
 
     private void Start()
     {
-        LoadAreas();
+        LoadAllSystems();
     }
 
-    public AreaList areaList = new AreaList();
-
+    private void SaveResource()
+    {
+       int amount = _resourceManager.GetResourceAmount();
+       _resource.Gold = amount;
+       
+       string json = JsonUtility.ToJson(_resource);
+       SaveSystem.Save(json);
+    }
     private void SaveAreas()
     {
         for (int i = 0; i < SaveList.Count; i++)
@@ -48,22 +61,32 @@ public class SaveManager : MonoBehaviour
         SaveSystem.Save(json);
     }
 
-    private void LoadAreas()
+    private void LoadAllSystems()
     {
         string saveString = SaveSystem.Load();
 
+        LoadAreas(saveString);
+        LoadResources(saveString);
+    }
+    private void LoadResources(string saveString)
+    {
+        Resource resource = JsonUtility.FromJson<Resource>(saveString);
+        _resource.Gold = resource.Gold;
+        _resourceManager.Load(_resource);
+    }
+    private void LoadAreas(string saveString)
+    {
         if (saveString != null)
         {
             AreaList itemList = JsonUtility.FromJson<AreaList>(saveString);
             areaList.AreaData = itemList.AreaData;
-            
-            
+
+
             for (int i = 0; i < SaveList.Count; i++)
             {
                 AmmoCreationArea.SaveData tempObj = areaList.AreaData[i];
 
-                SaveList[i].GetLoaded(tempObj.IsLocked,tempObj.Name);
-                
+                SaveList[i].GetLoaded(tempObj.IsLocked, tempObj.Name);
             }
         }
         else

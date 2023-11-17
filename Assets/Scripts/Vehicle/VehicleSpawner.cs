@@ -61,9 +61,9 @@ public class VehicleSpawner : MonoBehaviour
     {
         VehicleController vehicleController = deactivatedVehicleList[0];
         deactivatedVehicleList.Remove(deactivatedVehicleList[0]);
-        vehicleController.Activate(PickRandomVehicle());
         vehicleController.MoveVehicle(startLocation.position);
         vehicleController.TurnVehicle(endLocation.position);
+        vehicleController.Activate(PickRandomVehicle());
         return vehicleController;
     }
 

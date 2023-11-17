@@ -32,11 +32,20 @@ public class AmmoCreationArea : AreaController
     private int x_Count, y_Count, z_Count,_id;
     private Coroutine _spawnCoroutine;
     private bool isLocked;
+    
+    private AreaManager _areaManager;
+
+    public void Init(AreaManager areaManager)
+    {
+        _areaManager = areaManager;
+    }
 
     public void GetLoaded(bool lockState,string name)
     {
         SetLock(lockState);
         gameObject.name = name;
+        _areaManager.CheckLock(this);
+
     }
     public List<AmmoController> GetAmmoList()
     {

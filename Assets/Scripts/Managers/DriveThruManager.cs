@@ -30,6 +30,7 @@ public class DriveThruManager : MonoBehaviour
 
     public void RemoveFromList(VehicleController vehicleController)
     {
+        _vehicleSpawner.PushToList(vehicleController);
         _vehicleList.Remove(vehicleController);
     }
 }
