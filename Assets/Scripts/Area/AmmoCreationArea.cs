@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class AmmoCreationArea : AreaController
 {
@@ -12,11 +13,11 @@ public class AmmoCreationArea : AreaController
         public bool IsLocked;
         public string Name;
     }
-    
-    
+
     [SerializeField] private AmmoController _ammoPrefab;
     [SerializeField] private Transform _spawnLocation;
     [SerializeField] private List<AmmoController> _ammoList = new List<AmmoController>();
+    [SerializeField] private GameObject _model;
 
     [Header("Collection Area")] [SerializeField]
     private CollectionAreaController _collectionAreaController;
@@ -25,14 +26,15 @@ public class AmmoCreationArea : AreaController
     private Vector3 _limits;
 
     [SerializeField] private int _maxSpawn;
+    [SerializeField] private Image _lockedImage;
 
     [Header("Grid Padding")] [SerializeField]
     private int _padding;
 
-    private int x_Count, y_Count, z_Count,_id;
+    private int x_Count, y_Count, z_Count, _id;
     private Coroutine _spawnCoroutine;
-    private bool isLocked;
-    
+    private bool isLocked, _isLoaded;
+
     private AreaManager _areaManager;
 
     public void Init(AreaManager areaManager)
@@ -40,26 +42,64 @@ public class AmmoCreationArea : AreaController
         _areaManager = areaManager;
     }
 
-    public void GetLoaded(bool lockState,string name)
+    public void LoadArea(bool lockState, string name)
     {
         SetLock(lockState);
         gameObject.name = name;
+        _isLoaded = true;
         _areaManager.CheckLock(this);
-
+        CheckLock();
     }
+
+    public bool IsLoaded()
+    {
+        return _isLoaded;
+    }
+
     public List<AmmoController> GetAmmoList()
     {
         return _ammoList;
+    }
+
+    public override void CheckLock()
+    {
+        base.CheckLock();
+        if (isLocked)
+        {
+            LockArea();
+        }
+        else
+        {
+            UnlockArea();
+        }
+    }
+
+    public override void LockArea()
+    {
+        base.LockArea();
+        _collectionAreaController.gameObject.SetActive(false);
+        _lockedImage.gameObject.SetActive(true);
+        _model.SetActive(false);
+    }
+
+    public override void UnlockArea()
+    {
+        base.UnlockArea();
+        _collectionAreaController.gameObject.SetActive(true);
+        _lockedImage.gameObject.SetActive(false);
+        _model.SetActive(true);
     }
 
     public bool IsLocked()
     {
         return isLocked;
     }
+
     public void SetLock(bool lockState)
     {
         isLocked = lockState;
     }
+
     private void OnValidate()
     {
         _maxSpawn = (int)(_limits.x * _limits.y * _limits.z);
@@ -68,7 +108,14 @@ public class AmmoCreationArea : AreaController
     public override void TriggerArea()
     {
         base.TriggerArea();
-        AreaTriggered();
+        if (isLocked)
+        {
+            //Satın alınabilir yap
+        }
+        else
+        {
+            AreaTriggered();
+        }
     }
 
     public void AreaTriggered()

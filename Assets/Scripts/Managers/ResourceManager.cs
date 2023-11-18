@@ -25,6 +25,7 @@ public class ResourceManager : MonoBehaviour
     }
     public void Load(SaveManager.Resource resource)
     {
+        Debug.Log("load for resource worked");
         SetGold(resource.Gold);
         SetGoldText();
     }

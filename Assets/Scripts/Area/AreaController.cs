@@ -11,7 +11,8 @@ public class AreaController : MonoBehaviour, IInteractable
 {
     public Type AmmoType;
     [SerializeField] private Image _fillImage;
-    private bool _playerEntered, _isLocked;
+    [SerializeField] private bool _isLocked;
+    private bool _playerEntered;
     private Tween _fillTween;
     private Coroutine _timerCoroutine;
 
@@ -54,6 +55,18 @@ public class AreaController : MonoBehaviour, IInteractable
     }
 
     public virtual void TriggerArea()
+    {
+    }
+
+    public virtual void LockArea()
+    {
+    }
+
+    public virtual void UnlockArea()
+    {
+    }
+
+    public virtual void CheckLock()
     {
     }
 

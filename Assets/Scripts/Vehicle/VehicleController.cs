@@ -3,13 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Mono.CompilerServices.SymbolWriter;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class VehicleController : MonoBehaviour
 {
     public Type VehicleType;
     [SerializeField] private List<GameObject> modelList = new List<GameObject>();
-
+    [SerializeField] private TextMeshProUGUI _textMeshProUGUI;
+    [SerializeField] private List<Image> _orderImageList = new List<Image>();
     public enum Type
     {
         Small,
@@ -21,6 +25,7 @@ public class VehicleController : MonoBehaviour
     {
         VehicleType = (Type)index;
         ActivateModel();
+        HideOrder();
     }
 
     public void Deactivate()
@@ -38,9 +43,41 @@ public class VehicleController : MonoBehaviour
         transform.LookAt(pos);
     }
 
-    public void DriveTo(Vector3 pos)
+    private void GiveOrder()
     {
-        transform.DOMove(pos, 0.5f).SetEase(Ease.InOutQuart);
+        int orderCount = Random.Range(1, 4);
+
+        _textMeshProUGUI.text = "x"+orderCount.ToString();
+        ShowOrder();
+    }
+
+    private void ShowOrder()
+    {
+        _textMeshProUGUI.gameObject.SetActive(true);
+        int index = (int)VehicleType;
+        _orderImageList[index].gameObject.SetActive(true);
+
+    }
+
+    private void CompleteOrder()
+    {
+        HideOrder();
+    }
+    private void HideOrder()
+    {
+        _textMeshProUGUI.gameObject.SetActive(false);
+        for (int i = 0; i < _orderImageList.Count; i++)
+        {
+            _orderImageList[i].gameObject.SetActive(false);
+        }
+    }
+    public void DriveToPayment(Vector3 pos)
+    {
+        transform.DOMove(pos, 2).SetEase(Ease.InOutQuart).OnComplete(GiveOrder);
+    }
+    public void DriveToEnd(Vector3 pos)
+    {
+        transform.DOMove(pos, 2).SetEase(Ease.InOutQuart);
     }
     private void ActivateModel()
     {

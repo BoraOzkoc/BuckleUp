@@ -22,11 +22,9 @@ public class VehicleSpawner : MonoBehaviour
 
     private void Start()
     {
-        SpawnVehicles();
-        _driveThruManager.StartConvoy();
     }
 
-    public void UnlockVehicle(int index)
+    public void UnlockVehicle(int index, bool canSpawn)
     {
         if (index == 0)
         {
@@ -39,6 +37,12 @@ public class VehicleSpawner : MonoBehaviour
         else if (index == 2)
         {
             heavyAmmoUnlocked = true;
+        }
+
+        if (canSpawn)
+        {
+            SpawnVehicles();
+            _driveThruManager.StartConvoy();
         }
     }
 

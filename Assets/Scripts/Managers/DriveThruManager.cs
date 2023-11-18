@@ -26,6 +26,13 @@ public class DriveThruManager : MonoBehaviour
            VehicleController spawnedVehicle = _vehicleSpawner.PullFromList(_start,_end);
            _vehicleList.Add(spawnedVehicle);
         }
+
+        MoveFirstVehicle();
+    }
+
+    private void MoveFirstVehicle()
+    {
+        _vehicleList[0].DriveToPayment(_paymentLocation.position);
     }
 
     public void RemoveFromList(VehicleController vehicleController)

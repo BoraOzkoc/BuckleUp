@@ -19,6 +19,7 @@ public class SaveManager : MonoBehaviour
         public List<AmmoCreationArea.SaveData> AreaData;
     }
 
+    [System.Serializable]
     public class Resource
     {
         public int Gold;
@@ -27,7 +28,7 @@ public class SaveManager : MonoBehaviour
     public List<AmmoCreationArea> SaveList = new List<AmmoCreationArea>();
     public AreaList areaList = new AreaList();
     [SerializeField] private ResourceManager _resourceManager;
-
+    private string _areaSaveName = "AreaSave", _reSourceSaveName = "ResourceSave";
     private Resource _resource = new Resource();
 
     private void OnApplicationFocus(bool hasFocus)
@@ -35,7 +36,7 @@ public class SaveManager : MonoBehaviour
         if (!hasFocus)
         {
             SaveAreas();
-            //SaveResource();
+            SaveResource();
         }
     }
 
@@ -50,7 +51,7 @@ public class SaveManager : MonoBehaviour
         _resource.Gold = amount;
 
         string json = JsonUtility.ToJson(_resource);
-        SaveSystem.Save(json);
+        SaveSystem.Save(json, _reSourceSaveName);
     }
 
     private void SaveAreas()
@@ -62,19 +63,21 @@ public class SaveManager : MonoBehaviour
         }
 
         string json = JsonUtility.ToJson(areaList);
-        SaveSystem.Save(json);
+        SaveSystem.Save(json, _areaSaveName);
     }
 
     private void LoadAllSystems()
     {
-        string saveString = SaveSystem.Load();
+        string areaSaveString = SaveSystem.Load(_areaSaveName);
+        string resourceSaveString = SaveSystem.Load(_reSourceSaveName);
 
-        LoadAreas(saveString);
-        LoadResources(saveString);
+        LoadAreas(areaSaveString);
+        LoadResources(resourceSaveString);
     }
 
     private void LoadResources(string saveString)
     {
+        Debug.Log(saveString);
         if (saveString != null)
         {
             Resource resource = JsonUtility.FromJson<Resource>(saveString);
@@ -85,6 +88,8 @@ public class SaveManager : MonoBehaviour
 
     private void LoadAreas(string saveString)
     {
+        Debug.Log(saveString);
+
         if (saveString != null)
         {
             if (areaList.AreaData.Count == SaveList.Count)
@@ -97,12 +102,26 @@ public class SaveManager : MonoBehaviour
                 {
                     AmmoCreationArea.SaveData tempObj = areaList.AreaData[i];
 
-                    SaveList[i].GetLoaded(tempObj.IsLocked, tempObj.Name);
+                    SaveList[i].LoadArea(tempObj.IsLocked, tempObj.Name);
                 }
             }
         }
         else
         {
+            for (int i = 0; i < SaveList.Count; i++)
+            {
+                bool firstArea = i == 0;
+                if (firstArea)
+                {
+                    SaveList[i].SetLock(false);
+                }
+                else
+                {
+                    SaveList[i].SetLock(true);
+                }
+
+                SaveList[i].CheckLock();
+            }
         }
     }
 }

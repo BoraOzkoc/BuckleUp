@@ -40,7 +40,18 @@ public class AreaManager : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException();
         }
-        vehicleSpawner.UnlockVehicle(index);
+        vehicleSpawner.UnlockVehicle(index,AllAreasLoaded());
 
+    }
+
+    private bool AllAreasLoaded()
+    {
+        bool allLoaded = true;
+        for (int i = 0; i < areaList.Count; i++)
+        {
+            if (!areaList[i].IsLoaded()) allLoaded = false;
+        }
+
+        return allLoaded;
     }
 }
