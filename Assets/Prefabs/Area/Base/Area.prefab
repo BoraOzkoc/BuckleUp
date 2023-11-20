@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 6210103081062514120}
   - component: {fileID: 6210103081062514167}
   - component: {fileID: 3656968499735874609}
+  - component: {fileID: 9101647148409984968}
   m_Layer: 0
   m_Name: Area
   m_TagString: Untagged
@@ -232,14 +233,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AmmoType: 0
   _fillImage: {fileID: 6210103082515785311}
+  _isLocked: 0
   _ammoPrefab: {fileID: 8133045476859831512, guid: 1d510faed0a8df748be5114618b59ae4,
     type: 3}
   _spawnLocation: {fileID: 2876566577126965084}
   _ammoList: []
+  _model: {fileID: 0}
   _collectionAreaController: {fileID: 149092230920180887}
+  _unlockAmount: 0
   _limits: {x: 3, y: 3, z: 3}
   _maxSpawn: 27
+  _lockedImage: {fileID: 0}
   _padding: 1
+--- !u!114 &9101647148409984968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6210103081062514123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6936b588c3b144741acdc2cb6568206e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6210103082330412741
 GameObject:
   m_ObjectHideFlags: 0

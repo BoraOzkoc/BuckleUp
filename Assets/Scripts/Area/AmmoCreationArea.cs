@@ -21,6 +21,7 @@ public class AmmoCreationArea : AreaController
 
     [Header("Collection Area")] [SerializeField]
     private CollectionAreaController _collectionAreaController;
+    [Header("Locked Area Info")] [SerializeField] private int _unlockAmount;
 
     [Header("Grid Limits")] [SerializeField]
     private Vector3 _limits;
@@ -37,9 +38,12 @@ public class AmmoCreationArea : AreaController
 
     private AreaManager _areaManager;
 
+    private MoneyCollectionArea _moneyCollectionArea;
     public void Init(AreaManager areaManager)
     {
         _areaManager = areaManager;
+        _moneyCollectionArea = GetComponent<MoneyCollectionArea>();
+        _moneyCollectionArea.Init(this);
     }
 
     public void LoadArea(bool lockState, string name)
@@ -51,6 +55,10 @@ public class AmmoCreationArea : AreaController
         CheckLock();
     }
 
+    public int GetUnlockAmount()
+    {
+        return _unlockAmount;
+    }
     public bool IsLoaded()
     {
         return _isLoaded;
@@ -105,17 +113,19 @@ public class AmmoCreationArea : AreaController
         _maxSpawn = (int)(_limits.x * _limits.y * _limits.z);
     }
 
-    public override void TriggerArea()
+    public override bool TriggerArea(AmmoCollector ammoCollector)
     {
-        base.TriggerArea();
+        base.TriggerArea(ammoCollector);
         if (isLocked)
         {
-            //Satın alınabilir yap
+            _moneyCollectionArea.TriggerArea(ammoCollector);
         }
         else
         {
             AreaTriggered();
         }
+
+        return !isLocked;
     }
 
     public void AreaTriggered()

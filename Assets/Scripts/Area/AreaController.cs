@@ -15,6 +15,7 @@ public class AreaController : MonoBehaviour, IInteractable
     private bool _playerEntered;
     private Tween _fillTween;
     private Coroutine _timerCoroutine;
+    private AmmoCollector _ammoCollector;
 
     public enum Type
     {
@@ -37,6 +38,7 @@ public class AreaController : MonoBehaviour, IInteractable
     {
         if (other.TryGetComponent<AmmoCollector>(out AmmoCollector ammoCollector))
         {
+            _ammoCollector = ammoCollector;
             AreaEntered();
         }
     }
@@ -45,6 +47,7 @@ public class AreaController : MonoBehaviour, IInteractable
     {
         if (other.TryGetComponent<AmmoCollector>(out AmmoCollector ammoCollector))
         {
+            _ammoCollector = null;
             AreaExit();
         }
     }
@@ -54,8 +57,9 @@ public class AreaController : MonoBehaviour, IInteractable
         return _playerEntered;
     }
 
-    public virtual void TriggerArea()
+    public virtual bool TriggerArea(AmmoCollector ammoCollector)
     {
+        return true;
     }
 
     public virtual void LockArea()
@@ -93,9 +97,15 @@ public class AreaController : MonoBehaviour, IInteractable
     {
         while (IsPlayerEntered())
         {
-            TriggerArea();
-
-            yield return new WaitForSeconds(1);
+            bool canLoop = TriggerArea(_ammoCollector);
+            if (canLoop)
+            {
+                yield return new WaitForSeconds(1);
+            }
+            else
+            {
+                yield return null;
+            }
         }
 
         _timerCoroutine = null;

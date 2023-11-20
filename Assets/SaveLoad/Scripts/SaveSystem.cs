@@ -32,11 +32,23 @@ public static class SaveSystem
         FileInfo mostRecentFile = null;
         foreach (FileInfo fileInfo in saveFiles)
         {
-            string tempPAth =name + "." + SAVE_EXTENSION;
-            FileInfo[] testDirectoryData = directoryInfo.GetFiles(tempPAth);
-            string saveString = File.ReadAllText(testDirectoryData[0].Name);
-            Debug.Log("aaaaaaaaaaaaa");
-            return saveString;
+            string fileName = fileInfo.Name;
+            Debug.Log("file.name : " + fileName);
+            Debug.Log("name : " + name + "." + SAVE_EXTENSION);
+            Debug.Log("file.count : " + fileName.Length);
+            string test = name + "." + SAVE_EXTENSION;
+            Debug.Log("name.count : " + test.Length);
+            if (Equals(fileName, test))
+            {
+                Debug.Log("aaaaaa");
+                string saveString = File.ReadAllText(directoryInfo +fileInfo.Name);
+                return saveString;
+
+            }
+            else
+            {
+            }
+
         }
 
         return null;
