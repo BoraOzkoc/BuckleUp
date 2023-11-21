@@ -25,9 +25,10 @@ public class MoneyCollectionArea : MonoBehaviour
     public void TriggerArea(AmmoCollector ammoCollector)
     {
         int goldAmount = ResourceManager.Instance.GetGold();
-        if (goldAmount > GetNeededGoldAmount())
+        if (goldAmount >= GetNeededGoldAmount())
         {
             UnlockArea();
+            ResourceManager.Instance.RemoveGold(GetNeededGoldAmount());
         }
     }
 

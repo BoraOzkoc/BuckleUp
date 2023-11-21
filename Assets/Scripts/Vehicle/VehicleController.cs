@@ -14,6 +14,8 @@ public class VehicleController : MonoBehaviour
     [SerializeField] private List<GameObject> modelList = new List<GameObject>();
     [SerializeField] private TextMeshProUGUI _textMeshProUGUI;
     [SerializeField] private List<Image> _orderImageList = new List<Image>();
+    private int _orderAmount;
+
     public enum Type
     {
         Small,
@@ -46,23 +48,23 @@ public class VehicleController : MonoBehaviour
     private void GiveOrder()
     {
         int orderCount = Random.Range(1, 4);
-
-        _textMeshProUGUI.text = "x"+orderCount.ToString();
+        _orderAmount = orderCount;
         ShowOrder();
     }
 
     private void ShowOrder()
     {
+        _textMeshProUGUI.text = "x" + _orderAmount;
         _textMeshProUGUI.gameObject.SetActive(true);
         int index = (int)VehicleType;
         _orderImageList[index].gameObject.SetActive(true);
-
     }
 
     private void CompleteOrder()
     {
         HideOrder();
     }
+
     private void HideOrder()
     {
         _textMeshProUGUI.gameObject.SetActive(false);
@@ -71,14 +73,17 @@ public class VehicleController : MonoBehaviour
             _orderImageList[i].gameObject.SetActive(false);
         }
     }
+
     public void DriveToPayment(Vector3 pos)
     {
         transform.DOMove(pos, 2).SetEase(Ease.InOutQuart).OnComplete(GiveOrder);
     }
+
     public void DriveToEnd(Vector3 pos)
     {
         transform.DOMove(pos, 2).SetEase(Ease.InOutQuart);
     }
+
     private void ActivateModel()
     {
         int index = (int)VehicleType;

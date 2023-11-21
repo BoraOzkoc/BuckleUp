@@ -143,8 +143,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5b56d9fa0e8bd6e409ed188db38a692c, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 03a52e934f88f4a699b498a51573c186, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -214,7 +214,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6210103081062514123}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2, y: 0.36068678, z: 2}
@@ -233,7 +233,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AmmoType: 0
   _fillImage: {fileID: 6210103082515785311}
-  _isLocked: 0
   _ammoPrefab: {fileID: 8133045476859831512, guid: 1d510faed0a8df748be5114618b59ae4,
     type: 3}
   _spawnLocation: {fileID: 2876566577126965084}

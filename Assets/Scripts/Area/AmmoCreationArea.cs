@@ -21,7 +21,9 @@ public class AmmoCreationArea : AreaController
 
     [Header("Collection Area")] [SerializeField]
     private CollectionAreaController _collectionAreaController;
-    [Header("Locked Area Info")] [SerializeField] private int _unlockAmount;
+
+    [Header("Locked Area Info")] [SerializeField]
+    private int _unlockAmount;
 
     [Header("Grid Limits")] [SerializeField]
     private Vector3 _limits;
@@ -39,6 +41,7 @@ public class AmmoCreationArea : AreaController
     private AreaManager _areaManager;
 
     private MoneyCollectionArea _moneyCollectionArea;
+
     public void Init(AreaManager areaManager)
     {
         _areaManager = areaManager;
@@ -59,6 +62,7 @@ public class AmmoCreationArea : AreaController
     {
         return _unlockAmount;
     }
+
     public bool IsLoaded()
     {
         return _isLoaded;
@@ -85,6 +89,7 @@ public class AmmoCreationArea : AreaController
     public override void LockArea()
     {
         base.LockArea();
+        isLocked = true;
         _collectionAreaController.gameObject.SetActive(false);
         _lockedImage.gameObject.SetActive(true);
         _model.SetActive(false);
@@ -93,6 +98,7 @@ public class AmmoCreationArea : AreaController
     public override void UnlockArea()
     {
         base.UnlockArea();
+        isLocked = false;
         _collectionAreaController.gameObject.SetActive(true);
         _lockedImage.gameObject.SetActive(false);
         _model.SetActive(true);

@@ -33,22 +33,15 @@ public static class SaveSystem
         foreach (FileInfo fileInfo in saveFiles)
         {
             string fileName = fileInfo.Name;
-            Debug.Log("file.name : " + fileName);
-            Debug.Log("name : " + name + "." + SAVE_EXTENSION);
-            Debug.Log("file.count : " + fileName.Length);
             string test = name + "." + SAVE_EXTENSION;
-            Debug.Log("name.count : " + test.Length);
             if (Equals(fileName, test))
             {
-                Debug.Log("aaaaaa");
-                string saveString = File.ReadAllText(directoryInfo +fileInfo.Name);
+                string saveString = File.ReadAllText(directoryInfo + fileInfo.Name);
                 return saveString;
-
             }
             else
             {
             }
-
         }
 
         return null;

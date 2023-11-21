@@ -52,7 +52,6 @@ GameObject:
   - component: {fileID: 2594460411903010141}
   - component: {fileID: 2081164354575624217}
   - component: {fileID: 1729160655445641691}
-  - component: {fileID: 8153762889233771960}
   m_Layer: 0
   m_Name: HeavyAmmo (6)
   m_TagString: Untagged
@@ -125,20 +124,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8153762889233771960
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 146281647809128230}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43098415671269996, guid: a405442269e6f2c488a7d13251804cc9, type: 2}
 --- !u!1 &563310319364420925
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +135,6 @@ GameObject:
   - component: {fileID: 5380489471889344814}
   - component: {fileID: 7229188484248392693}
   - component: {fileID: 8175818269486962847}
-  - component: {fileID: 7575381511690893427}
   m_Layer: 0
   m_Name: MediumAmmo (2)
   m_TagString: Untagged
@@ -223,20 +207,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7575381511690893427
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 563310319364420925}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43879903066558894, guid: 2119ae628a910944592a9b616acf58c7, type: 2}
 --- !u!1 &564241177633134674
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +218,6 @@ GameObject:
   - component: {fileID: 9071390259529443014}
   - component: {fileID: 6158083334759727326}
   - component: {fileID: 6686106569773287689}
-  - component: {fileID: 6336705602382112700}
   m_Layer: 0
   m_Name: HeavyAmmo (9)
   m_TagString: Untagged
@@ -321,20 +290,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6336705602382112700
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 564241177633134674}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43098415671269996, guid: a405442269e6f2c488a7d13251804cc9, type: 2}
 --- !u!1 &664241114602452468
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,7 +301,6 @@ GameObject:
   - component: {fileID: 2378942282439094161}
   - component: {fileID: 7074722915494905766}
   - component: {fileID: 3046648382939308209}
-  - component: {fileID: 7897710965105158821}
   m_Layer: 0
   m_Name: HeavyAmmo (4)
   m_TagString: Untagged
@@ -419,20 +373,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7897710965105158821
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 664241114602452468}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43098415671269996, guid: a405442269e6f2c488a7d13251804cc9, type: 2}
 --- !u!1 &678666125290669356
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,7 +384,6 @@ GameObject:
   - component: {fileID: 2810553436968355270}
   - component: {fileID: 1271075073554579702}
   - component: {fileID: 3244304216389077933}
-  - component: {fileID: 7394990989874491789}
   m_Layer: 0
   m_Name: MediumAmmo (3)
   m_TagString: Untagged
@@ -517,20 +456,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7394990989874491789
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 678666125290669356}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43879903066558894, guid: 2119ae628a910944592a9b616acf58c7, type: 2}
 --- !u!1 &965951327357375742
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,7 +508,6 @@ GameObject:
   - component: {fileID: 1018094922542486881}
   - component: {fileID: 5543130970547419287}
   - component: {fileID: 3722030779629779278}
-  - component: {fileID: 4318466597777712343}
   m_Layer: 0
   m_Name: HeavyAmmo (3)
   m_TagString: Untagged
@@ -656,20 +580,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4318466597777712343
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1106711379281580950}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43098415671269996, guid: a405442269e6f2c488a7d13251804cc9, type: 2}
 --- !u!1 &1936421698151166352
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,7 +591,6 @@ GameObject:
   - component: {fileID: 8668035013691916389}
   - component: {fileID: 1554382777429672437}
   - component: {fileID: 3249936436440447062}
-  - component: {fileID: 5981731737785148206}
   m_Layer: 0
   m_Name: MediumAmmo (7)
   m_TagString: Untagged
@@ -754,20 +663,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5981731737785148206
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1936421698151166352}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43879903066558894, guid: 2119ae628a910944592a9b616acf58c7, type: 2}
 --- !u!1 &1981815882691159850
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,7 +674,6 @@ GameObject:
   - component: {fileID: 8547739401819391365}
   - component: {fileID: 3137743148930646888}
   - component: {fileID: 8621197470795346992}
-  - component: {fileID: 5096561286743515840}
   m_Layer: 0
   m_Name: HeavyAmmo (5)
   m_TagString: Untagged
@@ -852,20 +746,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5096561286743515840
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1981815882691159850}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43098415671269996, guid: a405442269e6f2c488a7d13251804cc9, type: 2}
 --- !u!1 &2154691859677743558
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,7 +757,6 @@ GameObject:
   - component: {fileID: 7015131647283514121}
   - component: {fileID: 7289940626719997370}
   - component: {fileID: 7399524969417133085}
-  - component: {fileID: 7041498929782482136}
   m_Layer: 0
   m_Name: MediumAmmo (1)
   m_TagString: Untagged
@@ -950,20 +829,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7041498929782482136
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2154691859677743558}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43879903066558894, guid: 2119ae628a910944592a9b616acf58c7, type: 2}
 --- !u!1 &2850415588406795736
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,7 +840,6 @@ GameObject:
   - component: {fileID: 2559505003099144123}
   - component: {fileID: 2052693923608050613}
   - component: {fileID: 9208851855303107421}
-  - component: {fileID: 3575239258692278204}
   m_Layer: 0
   m_Name: HeavyAmmo (2)
   m_TagString: Untagged
@@ -1048,20 +912,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3575239258692278204
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2850415588406795736}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43098415671269996, guid: a405442269e6f2c488a7d13251804cc9, type: 2}
 --- !u!1 &3131394536680086440
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,7 +923,6 @@ GameObject:
   - component: {fileID: 8798033798460446600}
   - component: {fileID: 2553657315544256785}
   - component: {fileID: 5664133832894932026}
-  - component: {fileID: 3307702889928298932}
   m_Layer: 0
   m_Name: SmallAmmo (1)
   m_TagString: Untagged
@@ -1146,20 +995,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3307702889928298932
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3131394536680086440}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43443953052719932, guid: 5a763297e2dd13d4e8fd7b31cb637eaa, type: 2}
 --- !u!1 &3179713363346966616
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,7 +1006,6 @@ GameObject:
   - component: {fileID: 7459128623695778173}
   - component: {fileID: 2683643549613597281}
   - component: {fileID: 4076184056846119835}
-  - component: {fileID: 5708987521871817163}
   m_Layer: 0
   m_Name: SmallAmmo (3)
   m_TagString: Untagged
@@ -1244,20 +1078,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5708987521871817163
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3179713363346966616}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43443953052719932, guid: 5a763297e2dd13d4e8fd7b31cb637eaa, type: 2}
 --- !u!1 &3492030006890225759
 GameObject:
   m_ObjectHideFlags: 0
@@ -1269,7 +1089,6 @@ GameObject:
   - component: {fileID: 1625971034236368380}
   - component: {fileID: 8591396527148168127}
   - component: {fileID: 6904659104257350796}
-  - component: {fileID: 6150291616041899452}
   m_Layer: 0
   m_Name: HeavyAmmo (1)
   m_TagString: Untagged
@@ -1342,20 +1161,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6150291616041899452
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3492030006890225759}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43098415671269996, guid: a405442269e6f2c488a7d13251804cc9, type: 2}
 --- !u!1 &3746392342080792514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,7 +1172,6 @@ GameObject:
   - component: {fileID: 8176162145392303719}
   - component: {fileID: 3703536018843008506}
   - component: {fileID: 6754037680459771146}
-  - component: {fileID: 8665300646250743897}
   m_Layer: 0
   m_Name: SmallAmmo (5)
   m_TagString: Untagged
@@ -1440,20 +1244,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8665300646250743897
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3746392342080792514}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43443953052719932, guid: 5a763297e2dd13d4e8fd7b31cb637eaa, type: 2}
 --- !u!1 &4747329226194443666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,7 +1255,6 @@ GameObject:
   - component: {fileID: 4749607408757423552}
   - component: {fileID: 4724325394027417176}
   - component: {fileID: 4734271812561160124}
-  - component: {fileID: 4684314122043014718}
   m_Layer: 0
   m_Name: SmallAmmo
   m_TagString: Untagged
@@ -1538,20 +1327,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4684314122043014718
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4747329226194443666}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43443953052719932, guid: 5a763297e2dd13d4e8fd7b31cb637eaa, type: 2}
 --- !u!1 &5546762266262364982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1563,7 +1338,6 @@ GameObject:
   - component: {fileID: 4268603379549220371}
   - component: {fileID: 4684172953376182078}
   - component: {fileID: 7643880123697483678}
-  - component: {fileID: 8887613546519201285}
   m_Layer: 0
   m_Name: SmallAmmo (7)
   m_TagString: Untagged
@@ -1636,20 +1410,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8887613546519201285
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5546762266262364982}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43443953052719932, guid: 5a763297e2dd13d4e8fd7b31cb637eaa, type: 2}
 --- !u!1 &5838147851590247924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1661,7 +1421,6 @@ GameObject:
   - component: {fileID: 4647394101740684066}
   - component: {fileID: 9089941986794040486}
   - component: {fileID: 4174482067766316958}
-  - component: {fileID: 1420864436301333281}
   m_Layer: 0
   m_Name: MediumAmmo (8)
   m_TagString: Untagged
@@ -1734,20 +1493,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1420864436301333281
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5838147851590247924}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43879903066558894, guid: 2119ae628a910944592a9b616acf58c7, type: 2}
 --- !u!1 &6064643810491061604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1759,7 +1504,6 @@ GameObject:
   - component: {fileID: 4249308305532172082}
   - component: {fileID: 5144719811209524884}
   - component: {fileID: 7967743492557358010}
-  - component: {fileID: 4466436984120148920}
   m_Layer: 0
   m_Name: SmallAmmo (2)
   m_TagString: Untagged
@@ -1832,20 +1576,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4466436984120148920
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6064643810491061604}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43443953052719932, guid: 5a763297e2dd13d4e8fd7b31cb637eaa, type: 2}
 --- !u!1 &6576222578172698590
 GameObject:
   m_ObjectHideFlags: 0
@@ -1857,7 +1587,6 @@ GameObject:
   - component: {fileID: 7916522313096501897}
   - component: {fileID: 7524925483944188135}
   - component: {fileID: 6558980407058506326}
-  - component: {fileID: 7218235411972976287}
   m_Layer: 0
   m_Name: SmallAmmo (8)
   m_TagString: Untagged
@@ -1930,20 +1659,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7218235411972976287
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6576222578172698590}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43443953052719932, guid: 5a763297e2dd13d4e8fd7b31cb637eaa, type: 2}
 --- !u!1 &6714801612922171374
 GameObject:
   m_ObjectHideFlags: 0
@@ -1955,7 +1670,6 @@ GameObject:
   - component: {fileID: 391971465418038003}
   - component: {fileID: 3889958237342841958}
   - component: {fileID: 3342507843500715345}
-  - component: {fileID: 8395605031059366705}
   m_Layer: 0
   m_Name: HeavyAmmo (8)
   m_TagString: Untagged
@@ -2028,20 +1742,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8395605031059366705
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6714801612922171374}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43098415671269996, guid: a405442269e6f2c488a7d13251804cc9, type: 2}
 --- !u!1 &6748750882763230932
 GameObject:
   m_ObjectHideFlags: 0
@@ -2053,7 +1753,6 @@ GameObject:
   - component: {fileID: 3079548123681214257}
   - component: {fileID: 5945541730840504414}
   - component: {fileID: 6662947787427386317}
-  - component: {fileID: 4478290268741032519}
   m_Layer: 0
   m_Name: HeavyAmmo (7)
   m_TagString: Untagged
@@ -2126,20 +1825,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4478290268741032519
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6748750882763230932}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43098415671269996, guid: a405442269e6f2c488a7d13251804cc9, type: 2}
 --- !u!1 &6986709631812603978
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,7 +1836,6 @@ GameObject:
   - component: {fileID: 321105701434112603}
   - component: {fileID: 7734113716146189714}
   - component: {fileID: 4456098687925115942}
-  - component: {fileID: 8246411874596940305}
   m_Layer: 0
   m_Name: SmallAmmo (4)
   m_TagString: Untagged
@@ -2224,20 +1908,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8246411874596940305
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6986709631812603978}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43443953052719932, guid: 5a763297e2dd13d4e8fd7b31cb637eaa, type: 2}
 --- !u!1 &6998213954344642606
 GameObject:
   m_ObjectHideFlags: 0
@@ -2249,7 +1919,6 @@ GameObject:
   - component: {fileID: 1074316164294841877}
   - component: {fileID: 1260869908507901209}
   - component: {fileID: 1680656349453531466}
-  - component: {fileID: 8586186483943491476}
   m_Layer: 0
   m_Name: MediumAmmo (4)
   m_TagString: Untagged
@@ -2322,20 +1991,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8586186483943491476
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6998213954344642606}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43879903066558894, guid: 2119ae628a910944592a9b616acf58c7, type: 2}
 --- !u!1 &7142271135069869099
 GameObject:
   m_ObjectHideFlags: 0
@@ -2347,7 +2002,6 @@ GameObject:
   - component: {fileID: 2279895918606791675}
   - component: {fileID: 2444148851544451252}
   - component: {fileID: 5428114600045059970}
-  - component: {fileID: 6683129890200339922}
   m_Layer: 0
   m_Name: MediumAmmo (6)
   m_TagString: Untagged
@@ -2420,20 +2074,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6683129890200339922
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7142271135069869099}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43879903066558894, guid: 2119ae628a910944592a9b616acf58c7, type: 2}
 --- !u!1 &7364424005850475269
 GameObject:
   m_ObjectHideFlags: 0
@@ -2445,7 +2085,6 @@ GameObject:
   - component: {fileID: 3396399855385387724}
   - component: {fileID: 1451215592133040870}
   - component: {fileID: 6447543842384471639}
-  - component: {fileID: 5024816182043662282}
   m_Layer: 0
   m_Name: MediumAmmo (5)
   m_TagString: Untagged
@@ -2518,20 +2157,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5024816182043662282
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7364424005850475269}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43879903066558894, guid: 2119ae628a910944592a9b616acf58c7, type: 2}
 --- !u!1 &7479309364006466742
 GameObject:
   m_ObjectHideFlags: 0
@@ -2639,7 +2264,6 @@ GameObject:
   - component: {fileID: 5565532851473718794}
   - component: {fileID: 4479661942572146964}
   - component: {fileID: 6392921471628003046}
-  - component: {fileID: 8664877975693810510}
   m_Layer: 0
   m_Name: SmallAmmo (9)
   m_TagString: Untagged
@@ -2712,20 +2336,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8664877975693810510
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7586386478486300579}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43443953052719932, guid: 5a763297e2dd13d4e8fd7b31cb637eaa, type: 2}
 --- !u!1 &8055018454034226261
 GameObject:
   m_ObjectHideFlags: 0
@@ -2737,7 +2347,6 @@ GameObject:
   - component: {fileID: 4176694254955573740}
   - component: {fileID: 2054204116962203571}
   - component: {fileID: 3646998483710705570}
-  - component: {fileID: 5627920846436672142}
   m_Layer: 0
   m_Name: SmallAmmo (6)
   m_TagString: Untagged
@@ -2810,20 +2419,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5627920846436672142
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8055018454034226261}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43443953052719932, guid: 5a763297e2dd13d4e8fd7b31cb637eaa, type: 2}
 --- !u!1 &8354790463297278902
 GameObject:
   m_ObjectHideFlags: 0
@@ -2835,7 +2430,6 @@ GameObject:
   - component: {fileID: 385480718971906090}
   - component: {fileID: 605962453687572348}
   - component: {fileID: 6255518469253965423}
-  - component: {fileID: 6601378327126170852}
   m_Layer: 0
   m_Name: MediumAmmo (9)
   m_TagString: Untagged
@@ -2908,20 +2502,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6601378327126170852
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8354790463297278902}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43879903066558894, guid: 2119ae628a910944592a9b616acf58c7, type: 2}
 --- !u!1 &8702496720000728462
 GameObject:
   m_ObjectHideFlags: 0
@@ -2974,7 +2554,6 @@ GameObject:
   - component: {fileID: 8902254752876415797}
   - component: {fileID: 8931425688883915199}
   - component: {fileID: 8922982091781064895}
-  - component: {fileID: 8890630289922934179}
   m_Layer: 0
   m_Name: HeavyAmmo
   m_TagString: Untagged
@@ -3047,20 +2626,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8890630289922934179
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8899541403808923417}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43098415671269996, guid: a405442269e6f2c488a7d13251804cc9, type: 2}
 --- !u!1 &8949295174134988937
 GameObject:
   m_ObjectHideFlags: 0
@@ -3072,7 +2637,6 @@ GameObject:
   - component: {fileID: 8944448112855669683}
   - component: {fileID: 8954974160127294353}
   - component: {fileID: 8963760244810794963}
-  - component: {fileID: 8994948153783120819}
   m_Layer: 0
   m_Name: MediumAmmo
   m_TagString: Untagged
@@ -3145,17 +2709,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8994948153783120819
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8949295174134988937}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43879903066558894, guid: 2119ae628a910944592a9b616acf58c7, type: 2}
