@@ -33,6 +33,7 @@ public class AmmoCreationArea : AreaController
 
     [Header("Grid Padding")] [SerializeField]
     private int _padding;
+    
 
     private int x_Count, y_Count, z_Count, _id;
     private Coroutine _spawnCoroutine;
