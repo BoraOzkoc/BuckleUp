@@ -77,7 +77,6 @@ public class SaveManager : MonoBehaviour
 
     private void LoadResources(string saveString)
     {
-        Debug.Log(saveString);
         if (saveString != null)
         {
             Resource resource = JsonUtility.FromJson<Resource>(saveString);
@@ -88,7 +87,6 @@ public class SaveManager : MonoBehaviour
 
     private void LoadAreas(string saveString)
     {
-        Debug.Log(saveString);
 
         if (saveString != null)
         {

@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface ICollectable
 {
-    void GetCollected(Transform parent);
+    void GetCollected(ContainerController containerController);
     void GetTransferred(Transform parent);
 }

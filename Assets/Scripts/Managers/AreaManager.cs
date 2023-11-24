@@ -40,8 +40,13 @@ public class AreaManager : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException();
         }
-        vehicleSpawner.UnlockVehicle(index,AllAreasLoaded());
 
+        if (!ammoCreationArea.IsLocked()) vehicleSpawner.UnlockVehicle(index);
+        if(AllAreasLoaded())
+        {
+            vehicleSpawner.SpawnVehicles();
+            _driveThruManager.StartConvoy();
+        }
     }
 
     private bool AllAreasLoaded()

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -24,7 +25,7 @@ public class VehicleSpawner : MonoBehaviour
     {
     }
 
-    public void UnlockVehicle(int index, bool canSpawn)
+    public void UnlockVehicle(int index)
     {
         if (index == 0)
         {
@@ -38,15 +39,9 @@ public class VehicleSpawner : MonoBehaviour
         {
             heavyAmmoUnlocked = true;
         }
-
-        if (canSpawn)
-        {
-            SpawnVehicles();
-            _driveThruManager.StartConvoy();
-        }
     }
 
-    private void SpawnVehicles()
+    public void SpawnVehicles()
     {
         if (deactivatedVehicleList.Count < 1)
         {
@@ -57,6 +52,7 @@ public class VehicleSpawner : MonoBehaviour
                 deactivatedVehicleList.Add(tempVehicle);
                 tempVehicle.Deactivate();
                 tempVehicle.MoveVehicle(transform.position);
+                tempVehicle.Init(_driveThruManager);
             }
         }
     }

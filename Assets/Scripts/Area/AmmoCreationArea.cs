@@ -33,7 +33,7 @@ public class AmmoCreationArea : AreaController
 
     [Header("Grid Padding")] [SerializeField]
     private int _padding;
-    
+
 
     private int x_Count, y_Count, z_Count, _id;
     private Coroutine _spawnCoroutine;
@@ -50,13 +50,13 @@ public class AmmoCreationArea : AreaController
         _moneyCollectionArea.Init(this);
     }
 
-    public void LoadArea(bool lockState, string name)
+    public void LoadArea(bool state, string name)
     {
-        SetLock(lockState);
+        SetLock(state);
         gameObject.name = name;
         _isLoaded = true;
-        _areaManager.CheckLock(this);
         CheckLock();
+        _areaManager.CheckLock(this);
     }
 
     public int GetUnlockAmount()

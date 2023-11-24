@@ -20,6 +20,6 @@ public class AmmoCollector : MonoBehaviour
 
     private void TriggerCollectedAmmo(ContainerController containerController, AmmoController ammoController)
     {
-        ammoController.GetCollected(containerController.transform);
+        ammoController.GetCollected(containerController);
     }
 }

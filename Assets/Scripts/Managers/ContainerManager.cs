@@ -5,17 +5,34 @@ using UnityEngine;
 
 public class ContainerManager : MonoBehaviour
 {
-    [SerializeField] private List<Transform> containerList = new List<Transform>();
+    public static ContainerManager Instance;
+    [SerializeField] private List<ContainerController> containerList = new List<ContainerController>();
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Debug.Log("Destroying duplicate ContainerManager Instance");
+            Destroy(this);
+        }
+        else
+        {
+            //Debug.Log("Setting ContainerManager Instance");
+            Instance = this;
+        }
+    }
+
+    
+
+    public ContainerController GetContainer(int index)
+    {
+        return containerList[index];
+    }
 
     public Vector3 GetContainerPos(int index)
     {
-        return containerList[index].position;
+        return containerList[index].transform.position;
     }
 
-    public void TriggerBounceAnimation(int index)
-    {
-        Transform container = containerList[index];
-        container.localScale = Vector3.one;
-        container.DOScale(Vector3.one * 1.5f, 0.3f).SetEase(Ease.InBounce).SetLoops(2, LoopType.Yoyo);
-    }
+    
 }

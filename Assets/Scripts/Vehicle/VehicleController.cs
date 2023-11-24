@@ -15,12 +15,36 @@ public class VehicleController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _textMeshProUGUI;
     [SerializeField] private List<Image> _orderImageList = new List<Image>();
     private int _orderAmount;
+    private DriveThruManager _driveThruManager;
+    private TradeAreaController _tradeAreaController;
 
     public enum Type
     {
         Small,
         Medium,
         Heavy
+    }
+
+    public void CollectAmmo(AmmoController ammoController)
+    {
+        ammoController.GetTransferred(transform);
+        ChangeAmount(-1);
+    }
+
+    public int GetOrderAmount()
+    {
+        return _orderAmount;
+    }
+
+    public int GetIndex()
+    {
+        return (int)VehicleType;
+    }
+
+    public void Init(DriveThruManager driveThruManager)
+    {
+        _driveThruManager = driveThruManager;
+        _tradeAreaController = _driveThruManager.GetTradeAreaController();
     }
 
     public void Activate(int index)
@@ -50,11 +74,23 @@ public class VehicleController : MonoBehaviour
         int orderCount = Random.Range(1, 4);
         _orderAmount = orderCount;
         ShowOrder();
+        _tradeAreaController.SetVehicle(this);
+    }
+
+    public void ChangeAmount(int amount)
+    {
+        _orderAmount += amount;
+        UpdateText();
+    }
+
+    private void UpdateText()
+    {
+        _textMeshProUGUI.text = "x" + _orderAmount;
     }
 
     private void ShowOrder()
     {
-        _textMeshProUGUI.text = "x" + _orderAmount;
+        UpdateText();
         _textMeshProUGUI.gameObject.SetActive(true);
         int index = (int)VehicleType;
         _orderImageList[index].gameObject.SetActive(true);

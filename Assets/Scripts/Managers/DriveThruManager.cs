@@ -7,6 +7,7 @@ public class DriveThruManager : MonoBehaviour
 {
     [SerializeField] private List<VehicleController> _vehicleList = new List<VehicleController>();
     [SerializeField] private Transform _start, _end, _paymentLocation;
+    [SerializeField] private TradeAreaController _tradeAreaController;
     private VehicleSpawner _vehicleSpawner;
 
     private void Awake()
@@ -14,6 +15,10 @@ public class DriveThruManager : MonoBehaviour
         _vehicleSpawner = GetComponent<VehicleSpawner>();
     }
 
+    public TradeAreaController GetTradeAreaController()
+    {
+        return _tradeAreaController;
+    }
     public VehicleSpawner GetVehicleSpawner()
     {
         return _vehicleSpawner;
@@ -24,6 +29,7 @@ public class DriveThruManager : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
            VehicleController spawnedVehicle = _vehicleSpawner.PullFromList(_start,_end);
+           spawnedVehicle.Init(this);
            _vehicleList.Add(spawnedVehicle);
         }
 
