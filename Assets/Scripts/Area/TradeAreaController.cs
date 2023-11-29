@@ -19,9 +19,27 @@ public class TradeAreaController : MonoBehaviour
         {
             int index = _vehicleController.GetIndex();
             ContainerController containerController = _containerManager.GetContainer(index);
-            if (containerController.GotAmmo())
+            int difference = containerController.GetAmmoCount() - _vehicleController.GetOrderAmount();
+            if (difference > 0)
             {
-                containerController.TransferAmmo(_vehicleController);
+                for (int i = 0; i < _vehicleController.GetOrderAmount(); i++)
+                {
+                    containerController.TransferAmmo(_vehicleController);
+
+                }
+            }
+            else if (containerController.GetAmmoCount() == 0)
+            {
+                Debug.Log("Container is Empty");
+            }
+            else
+            {
+                for (int i = 0; i < containerController.GetAmmoCount(); i++)
+                {
+                    containerController.TransferAmmo(_vehicleController);
+
+                }
+                
             }
         }
     }

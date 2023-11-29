@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net.Mime;
 using DG.Tweening;
 using Mono.CompilerServices.SymbolWriter;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 

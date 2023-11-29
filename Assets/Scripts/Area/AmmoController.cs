@@ -41,6 +41,7 @@ public class AmmoController : MonoBehaviour, ICollectable
         }
     }
 
+    
     public void GetCollected(ContainerController containerController)
     {
         containerController.AddAmmo(this);

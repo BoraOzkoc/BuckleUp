@@ -25,17 +25,19 @@
 		UNITY_TRANSFER_INSTANCE_ID(vertexInput, vertexOutput);
 		UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(vertexOutput);
 
+		half outlineSize = _OutlineSize;
+		
 		//texcoords
 		#if defined(MK_TCM)
 			vertexOutput.uv = vertexInput.texcoord0;
 		#endif
 
 		#ifdef MK_OUTLINE_MAP
-			_OutlineSize *= tex2Dlod(_OutlineMap, float4(vertexOutput.uv, 0, 0)).r;
+			outlineSize *= tex2Dlod(_OutlineMap, float4(vertexOutput.uv, 0, 0)).r;
 		#endif
 
 		#ifdef MK_OUTLINE_NOISE
-			_OutlineSize = lerp(_OutlineSize, _OutlineSize * NoiseSimple(normalize(vertexInput.vertex.xyz), vertexInput.normal.xz), _OutlineNoise);
+			outlineSize = lerp(outlineSize, outlineSize * NoiseSimple(normalize(vertexInput.vertex.xyz), vertexInput.normal.xz), _OutlineNoise);
 		#endif
 
 		#ifdef MK_VERTEX_ANIMATION
@@ -44,19 +46,19 @@
 
 		#ifndef MK_LEGACY_SCREEN_SCALING
 			#if defined(MK_MULTI_PASS_STEREO_SCALING) || defined(UNITY_SINGLE_PASS_STEREO) || defined(UNITY_STEREO_INSTANCING_ENABLED) || defined(UNITY_STEREO_MULTIVIEW_ENABLED)
-				_OutlineSize *= 0.5;
+				outlineSize *= 0.5;
 			#endif
 		#endif
 
 		#ifdef MK_OUTLINE_FADING
 			float dist = distance(CAMERA_POSITION_WORLD , mul(MATRIX_M, float4(vertexInput.vertex.xyz, 1.0)).xyz);
 			#if defined(MK_OUTLINE_FADING_EXPONENTIAL)
-				_OutlineSize *= smoothstep(_OutlineFadeMin, _OutlineFadeMax, dist);
+				outlineSize *= smoothstep(_OutlineFadeMin, _OutlineFadeMax, dist);
 			#elif defined(MK_OUTLINE_FADING_INVERSE_EXPONENTIAL)
 				float interp = saturate((dist - _OutlineFadeMin) / (_OutlineFadeMax - _OutlineFadeMin));
-				_OutlineSize *= (interp + (interp - (interp * interp * (3.0f - 2.0f * interp))));
+				outlineSize *= (interp + (interp - (interp * interp * (3.0f - 2.0f * interp))));
 			#else
-				_OutlineSize *= saturate((dist - _OutlineFadeMin) / (_OutlineFadeMax - _OutlineFadeMin));
+				outlineSize *= saturate((dist - _OutlineFadeMin) / (_OutlineFadeMax - _OutlineFadeMin));
 			#endif
 		#endif
 
@@ -77,9 +79,9 @@
 			positionWorld = mul(MATRIX_M, float4(positionWorld, 1.0)).xyz;
 		#elif defined(MK_OUTLINE_HULL_OBJECT)
 			#if defined(MK_OUTLINE_DATA_UV7)
-				vertexInput.vertex.xyz += vertexInput.normalBaked * _OutlineSize * OUTLINE_OBJECT_SCALE;
+				vertexInput.vertex.xyz += vertexInput.normalBaked * outlineSize * OUTLINE_OBJECT_SCALE;
 			#else
-				vertexInput.vertex.xyz += vertexInput.normal * _OutlineSize * OUTLINE_OBJECT_SCALE;
+				vertexInput.vertex.xyz += vertexInput.normal * outlineSize * OUTLINE_OBJECT_SCALE;
 			#endif
 		#endif
 
@@ -102,10 +104,10 @@
 
 			#if defined(MK_OUTLINE_DATA_UV7)
 				half3 normalBakedClip = ComputeNormalObjectToClipSpace(vertexInput.normalBaked.xyz);
-				vertexOutput.svPositionClip.xy += 2 * oScale * _OutlineSize * SafeDivide(normalBakedClip.xy, _ScreenParams.xy) * scale;
+				vertexOutput.svPositionClip.xy += 2 * oScale * outlineSize * SafeDivide(normalBakedClip.xy, _ScreenParams.xy) * scale;
 			#else
 				half3 normalClip = ComputeNormalObjectToClipSpace(vertexInput.normal.xyz);
-				vertexOutput.svPositionClip.xy += 2 * oScale * _OutlineSize * SafeDivide(normalClip.xy, _ScreenParams.xy) * scale;
+				vertexOutput.svPositionClip.xy += 2 * oScale * outlineSize * SafeDivide(normalClip.xy, _ScreenParams.xy) * scale;
 			#endif
 		#else
 			vertexOutput.svPositionClip = ComputeObjectToClipSpace(vertexInput.vertex.xyz);

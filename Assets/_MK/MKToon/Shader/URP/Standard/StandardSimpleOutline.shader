@@ -559,6 +559,7 @@ Shader "MK/Toon/URP/Standard/Simple + Outline"
 			#pragma multi_compile_instancing
 
 			#define MK_URP
+			#include_with_pragmas "../../Lib/DotsInstancingSetup.hlsl"
 
 			#include "../../Lib/Outline/Setup.hlsl"
 
@@ -1137,6 +1138,7 @@ Shader "MK/Toon/URP/Standard/Simple + Outline"
 			#pragma multi_compile_instancing
 
 			#define MK_URP
+			#include_with_pragmas "../../Lib/DotsInstancingSetup.hlsl"
 
 			#include "../../Lib/Outline/Setup.hlsl"
 
@@ -1691,6 +1693,7 @@ Shader "MK/Toon/URP/Standard/Simple + Outline"
 			#pragma multi_compile_instancing
 
 			#define MK_URP
+			#include_with_pragmas "../../Lib/DotsInstancingSetup.hlsl"
 
 			#include "../../Lib/Outline/Setup.hlsl"
 

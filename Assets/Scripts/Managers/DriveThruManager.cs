@@ -28,14 +28,22 @@ public class DriveThruManager : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-           VehicleController spawnedVehicle = _vehicleSpawner.PullFromList(_start,_end);
-           spawnedVehicle.Init(this);
-           _vehicleList.Add(spawnedVehicle);
+            SpawnVehicle();
         }
 
         MoveFirstVehicle();
     }
 
+    private void SpawnVehicle()
+    {
+        VehicleController spawnedVehicle = _vehicleSpawner.PullFromList(_start,_end);
+        spawnedVehicle.Init(this);
+        _vehicleList.Add(spawnedVehicle);
+    }
+    public Transform GetEndPos()
+    {
+        return _end;
+    }
     private void MoveFirstVehicle()
     {
         _vehicleList[0].DriveToPayment(_paymentLocation.position);
@@ -45,5 +53,13 @@ public class DriveThruManager : MonoBehaviour
     {
         _vehicleSpawner.PushToList(vehicleController);
         _vehicleList.Remove(vehicleController);
+        UpdateConvoy();
+    }
+
+    private void UpdateConvoy()
+    {
+        SpawnVehicle();
+        MoveFirstVehicle();
+
     }
 }

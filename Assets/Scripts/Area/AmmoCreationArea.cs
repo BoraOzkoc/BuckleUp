@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -11,16 +12,20 @@ public class AmmoCreationArea : AreaController
     public class SaveData
     {
         public bool IsLocked;
-        public string Name;
+        public int AmmoAmount;
     }
 
     [SerializeField] private AmmoController _ammoPrefab;
     [SerializeField] private Transform _spawnLocation;
     [SerializeField] private List<AmmoController> _ammoList = new List<AmmoController>();
     [SerializeField] private GameObject _model;
+    [SerializeField] private TextMeshProUGUI _unlockGoldText;
 
     [Header("Collection Area")] [SerializeField]
-    private CollectionAreaController _collectionAreaController;
+    protected CollectionAreaController _collectionAreaController;
+
+    [Header("Container Controller")] [SerializeField]
+    private ContainerController _containerController;
 
     [Header("Locked Area Info")] [SerializeField]
     private int _unlockAmount;
@@ -29,7 +34,7 @@ public class AmmoCreationArea : AreaController
     private Vector3 _limits;
 
     [SerializeField] private int _maxSpawn;
-    [SerializeField] private Image _lockedImage;
+    [SerializeField] private Image _lockedImage, _golImage;
 
     [Header("Grid Padding")] [SerializeField]
     private int _padding;
@@ -48,15 +53,52 @@ public class AmmoCreationArea : AreaController
         _areaManager = areaManager;
         _moneyCollectionArea = GetComponent<MoneyCollectionArea>();
         _moneyCollectionArea.Init(this);
+        UpdateGoldText();
     }
 
-    public void LoadArea(bool state, string name)
+    public void Hide(bool state)
+    {
+        gameObject.SetActive(!state);
+    }
+
+    private void HideGold(bool state)
+    {
+        _unlockGoldText.gameObject.SetActive(state);
+    }
+
+    public void LoadArea(bool state, int ammoAmount)
     {
         SetLock(state);
-        gameObject.name = name;
         _isLoaded = true;
+        _containerController.Load(ammoAmount);
         CheckLock();
         _areaManager.CheckLock(this);
+    }
+
+    private void UpdateGoldText()
+    {
+        _unlockGoldText.text = _unlockAmount.ToString();
+    }
+
+    public void PrepareFirstArea()
+    {
+        _areaManager.TriggerVehicles();
+    }
+
+    public AmmoController LoadAmmo(Vector3 pos)
+    {
+        AmmoController tempAmmo =
+            Instantiate(_ammoPrefab, pos, Quaternion.identity, _spawnLocation);
+
+        int ammoTypeIndex = (int)AmmoType;
+
+        tempAmmo.PreapareAmmo(ammoTypeIndex);
+        return tempAmmo;
+    }
+
+    public ContainerController GetContainerController()
+    {
+        return _containerController;
     }
 
     public int GetUnlockAmount()
@@ -93,7 +135,9 @@ public class AmmoCreationArea : AreaController
         isLocked = true;
         _collectionAreaController.gameObject.SetActive(false);
         _lockedImage.gameObject.SetActive(true);
+        _golImage.gameObject.SetActive(true);
         _model.SetActive(false);
+        HideGold(true);
     }
 
     public override void UnlockArea()
@@ -102,7 +146,11 @@ public class AmmoCreationArea : AreaController
         isLocked = false;
         _collectionAreaController.gameObject.SetActive(true);
         _lockedImage.gameObject.SetActive(false);
+        _golImage.gameObject.SetActive(false);
         _model.SetActive(true);
+        HideGold(false);
+        _areaManager.GetAreaOrderController().CheckAllAreaLocks();
+        _areaManager.CheckLock(this);
     }
 
     public bool IsLocked()
@@ -165,7 +213,7 @@ public class AmmoCreationArea : AreaController
         }
     }
 
-    private void SpawnAmmo(Vector3 spawnPos)
+    public void SpawnAmmo(Vector3 spawnPos)
     {
         AmmoController tempAmmo =
             Instantiate(_ammoPrefab, spawnPos, Quaternion.identity, _spawnLocation);

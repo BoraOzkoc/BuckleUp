@@ -49,10 +49,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   areaList:
-    AreaDataList:
+    AreaData:
     - IsLocked: 0
-      name: 
+      AmmoAmount: 0
     - IsLocked: 0
-      name: 
+      AmmoAmount: 0
     - IsLocked: 0
-      name: 
+      AmmoAmount: 0
+  _resourceManager: {fileID: 0}

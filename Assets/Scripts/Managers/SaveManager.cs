@@ -6,7 +6,6 @@ using System.Linq;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -25,11 +24,16 @@ public class SaveManager : MonoBehaviour
         public int Gold;
     }
 
+    public delegate void LoadCompletedEvent();
+
+    public static event LoadCompletedEvent LoadCompleted;
+
     public List<AmmoCreationArea> SaveList = new List<AmmoCreationArea>();
     public AreaList areaList = new AreaList();
     [SerializeField] private ResourceManager _resourceManager;
     private string _areaSaveName = "AreaSave", _reSourceSaveName = "ResourceSave";
     private Resource _resource = new Resource();
+
 
     private void OnApplicationFocus(bool hasFocus)
     {
@@ -59,7 +63,7 @@ public class SaveManager : MonoBehaviour
         for (int i = 0; i < SaveList.Count; i++)
         {
             areaList.AreaData[i].IsLocked = SaveList[i].IsLocked();
-            areaList.AreaData[i].Name = SaveList[i].gameObject.name;
+            areaList.AreaData[i].AmmoAmount = SaveList[i].GetContainerController().GetAmmoCount();
         }
 
         string json = JsonUtility.ToJson(areaList);
@@ -87,7 +91,6 @@ public class SaveManager : MonoBehaviour
 
     private void LoadAreas(string saveString)
     {
-
         if (saveString != null)
         {
             if (areaList.AreaData.Count == SaveList.Count)
@@ -100,7 +103,7 @@ public class SaveManager : MonoBehaviour
                 {
                     AmmoCreationArea.SaveData tempObj = areaList.AreaData[i];
 
-                    SaveList[i].LoadArea(tempObj.IsLocked, tempObj.Name);
+                    SaveList[i].LoadArea(tempObj.IsLocked, tempObj.AmmoAmount);
                 }
             }
         }
@@ -119,7 +122,10 @@ public class SaveManager : MonoBehaviour
                 }
 
                 SaveList[i].CheckLock();
+                SaveList[i].PrepareFirstArea();
             }
         }
+
+        if (LoadCompleted != null) LoadCompleted();
     }
 }

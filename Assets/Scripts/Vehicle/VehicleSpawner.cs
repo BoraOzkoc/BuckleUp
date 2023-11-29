@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -21,8 +20,13 @@ public class VehicleSpawner : MonoBehaviour
         _driveThruManager = GetComponent<DriveThruManager>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
+    }
+
+    private void OnDisable()
+    {
+        throw new NotImplementedException();
     }
 
     public void UnlockVehicle(int index)
@@ -60,7 +64,8 @@ public class VehicleSpawner : MonoBehaviour
     public VehicleController PullFromList(Transform startLocation, Transform endLocation)
     {
         VehicleController vehicleController = deactivatedVehicleList[0];
-        deactivatedVehicleList.Remove(deactivatedVehicleList[0]);
+        deactivatedVehicleList.Remove(vehicleController);
+        activatedVehicleList.Add(vehicleController);
         vehicleController.MoveVehicle(startLocation.position);
         vehicleController.TurnVehicle(endLocation.position);
         vehicleController.Activate(PickRandomVehicle());

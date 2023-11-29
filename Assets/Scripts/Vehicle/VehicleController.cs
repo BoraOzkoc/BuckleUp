@@ -17,7 +17,7 @@ public class VehicleController : MonoBehaviour
     private int _orderAmount;
     private DriveThruManager _driveThruManager;
     private TradeAreaController _tradeAreaController;
-
+    private Transform _endPos;
     public enum Type
     {
         Small,
@@ -29,8 +29,13 @@ public class VehicleController : MonoBehaviour
     {
         ammoController.GetTransferred(transform);
         ChangeAmount(-1);
+        if(OrderFinished()) DriveToEnd();
     }
 
+    private bool OrderFinished()
+    {
+        return _orderAmount <= 0;
+    }
     public int GetOrderAmount()
     {
         return _orderAmount;
@@ -45,6 +50,7 @@ public class VehicleController : MonoBehaviour
     {
         _driveThruManager = driveThruManager;
         _tradeAreaController = _driveThruManager.GetTradeAreaController();
+        _endPos = driveThruManager.GetEndPos();
     }
 
     public void Activate(int index)
@@ -98,7 +104,7 @@ public class VehicleController : MonoBehaviour
 
     private void CompleteOrder()
     {
-        HideOrder();
+        _driveThruManager.RemoveFromList(this);
     }
 
     private void HideOrder()
@@ -115,11 +121,12 @@ public class VehicleController : MonoBehaviour
         transform.DOMove(pos, 2).SetEase(Ease.InOutQuart).OnComplete(GiveOrder);
     }
 
-    public void DriveToEnd(Vector3 pos)
+    private void DriveToEnd()
     {
-        transform.DOMove(pos, 2).SetEase(Ease.InOutQuart);
+        HideOrder();
+        transform.DOMove(_endPos.position, 2).SetEase(Ease.InOutQuart).OnComplete(CompleteOrder);
     }
-
+    
     private void ActivateModel()
     {
         int index = (int)VehicleType;

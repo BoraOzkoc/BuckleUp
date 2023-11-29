@@ -30,11 +30,16 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if(_useSetGold)SetGold(_gold);
+    }
+
     public int GetGold()
     {
         return _gold;
     }
-    private void SetGoldText()
+    private void UpdateGoldText()
     {
         _goldText.text = _gold.ToString();
     }
@@ -44,21 +49,27 @@ public class ResourceManager : MonoBehaviour
     }
     public void Load(SaveManager.Resource resource)
     {
-        SetGold(resource.Gold);
-        SetGoldText();
+       if(!_useSetGold) SetGold(resource.Gold);
+        UpdateGoldText();
     }
     
     public void SetGold(int amount)
     {
         _gold = amount;
+        UpdateGoldText();
+
     }
     public void AddGold(int amount = 1)
     {
         _gold += amount;
+        UpdateGoldText();
+
     }
 
     public void RemoveGold(int amount = 1)
     {
         _gold -= amount;
+        UpdateGoldText();
+
     }
 }

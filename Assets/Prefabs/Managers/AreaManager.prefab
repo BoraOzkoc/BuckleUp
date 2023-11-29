@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4440664830415922292}
   - component: {fileID: 4694967767882561854}
+  - component: {fileID: 8239930119752628014}
   m_Layer: 0
   m_Name: AreaManager
   m_TagString: Untagged
@@ -52,6 +53,19 @@ MonoBehaviour:
   - {fileID: 6396676133859364244}
   - {fileID: 3967541039347396431}
   - {fileID: 6220703844149725344}
+--- !u!114 &8239930119752628014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3052192647197356010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e8ed057945de8f4c8e1358f84e98929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _areaManager: {fileID: 4694967767882561854}
 --- !u!1001 &1349587288437100148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -313,12 +327,27 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3650228444463692256, guid: 49300bd10f357aa46a10585e2e594654,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.4199994
+      objectReference: {fileID: 0}
     - target: {fileID: 4967139768398496560, guid: 49300bd10f357aa46a10585e2e594654,
         type: 3}
       propertyPath: _unlockAmount
       value: 100
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8047828143145674535, guid: 49300bd10f357aa46a10585e2e594654,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.45
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1575013865, guid: 49300bd10f357aa46a10585e2e594654, type: 3}
+    - {fileID: 1781681550, guid: 49300bd10f357aa46a10585e2e594654, type: 3}
+    - {fileID: 859114168, guid: 49300bd10f357aa46a10585e2e594654, type: 3}
+    - {fileID: 1575013864, guid: 49300bd10f357aa46a10585e2e594654, type: 3}
+    - {fileID: 1575013863, guid: 49300bd10f357aa46a10585e2e594654, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 49300bd10f357aa46a10585e2e594654, type: 3}
 --- !u!4 &3655515041969830232 stripped
 Transform:
