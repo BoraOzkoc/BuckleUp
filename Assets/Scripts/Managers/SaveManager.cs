@@ -12,6 +12,7 @@ using UnityEngine.UI;
 
 public class SaveManager : MonoBehaviour
 {
+    
     [System.Serializable]
     public class AreaList
     {
@@ -25,15 +26,29 @@ public class SaveManager : MonoBehaviour
     }
 
     public delegate void LoadCompletedEvent();
-
     public static event LoadCompletedEvent LoadCompleted;
+    
+    public static SaveManager Instance;
+
 
     public List<AmmoCreationArea> SaveList = new List<AmmoCreationArea>();
     public AreaList areaList = new AreaList();
     [SerializeField] private ResourceManager _resourceManager;
     private string _areaSaveName = "AreaSave", _reSourceSaveName = "ResourceSave";
     private Resource _resource = new Resource();
-
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Debug.Log("Destroying duplicate SaveManager Instance");
+            Destroy(this);
+        }
+        else
+        {
+            //Debug.Log("Setting SaveManager Instance");
+            Instance = this;
+        }
+    }
 
     private void OnApplicationFocus(bool hasFocus)
     {

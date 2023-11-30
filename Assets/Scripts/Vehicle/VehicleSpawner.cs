@@ -20,15 +20,6 @@ public class VehicleSpawner : MonoBehaviour
         _driveThruManager = GetComponent<DriveThruManager>();
     }
 
-    private void OnEnable()
-    {
-    }
-
-    private void OnDisable()
-    {
-        throw new NotImplementedException();
-    }
-
     public void UnlockVehicle(int index)
     {
         if (index == 0)

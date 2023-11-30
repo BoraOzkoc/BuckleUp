@@ -17,7 +17,7 @@ public class VehicleController : MonoBehaviour
     private int _orderAmount;
     private DriveThruManager _driveThruManager;
     private TradeAreaController _tradeAreaController;
-    private Transform _endPos;
+    private Transform _endPos,_player;
     public enum Type
     {
         Small,
@@ -28,7 +28,7 @@ public class VehicleController : MonoBehaviour
     public void CollectAmmo(AmmoController ammoController)
     {
         ammoController.GetTransferred(transform);
-        ChangeAmount(-1);
+        ChangeNeededAmmoAmount(-1);
         if(OrderFinished()) DriveToEnd();
     }
 
@@ -51,6 +51,7 @@ public class VehicleController : MonoBehaviour
         _driveThruManager = driveThruManager;
         _tradeAreaController = _driveThruManager.GetTradeAreaController();
         _endPos = driveThruManager.GetEndPos();
+        _player = driveThruManager.GetPlayer();
     }
 
     public void Activate(int index)
@@ -83,10 +84,11 @@ public class VehicleController : MonoBehaviour
         _tradeAreaController.SetVehicle(this);
     }
 
-    public void ChangeAmount(int amount)
+    public void ChangeNeededAmmoAmount(int amount)
     {
         _orderAmount += amount;
         UpdateText();
+        if (amount < 0) ResourceManager.Instance.GetResourcePoolController().PullFromList(transform, _player);
     }
 
     private void UpdateText()

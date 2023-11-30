@@ -10,10 +10,11 @@ public class ResourceManager : MonoBehaviour
     [SerializeField]private int _gold;
     [SerializeField] private bool _useSetGold;
     [SerializeField] private TextMeshProUGUI _goldText;
+    [SerializeField] private ResourcePoolController _resourcePoolController;
+    [SerializeField] private Transform _playerPos;
     public enum Type
     {
         Gold,
-
     }
     //Singleton
     private void Awake()
@@ -35,6 +36,10 @@ public class ResourceManager : MonoBehaviour
         if(_useSetGold)SetGold(_gold);
     }
 
+    public ResourcePoolController GetResourcePoolController()
+    {
+        return _resourcePoolController;
+    }
     public int GetGold()
     {
         return _gold;
@@ -63,7 +68,6 @@ public class ResourceManager : MonoBehaviour
     {
         _gold += amount;
         UpdateGoldText();
-
     }
 
     public void RemoveGold(int amount = 1)
