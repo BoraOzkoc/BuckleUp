@@ -88,7 +88,7 @@ public class VehicleController : MonoBehaviour
     {
         _orderAmount += amount;
         UpdateText();
-        if (amount < 0) ResourceManager.Instance.GetResourcePoolController().PullFromList(transform, _player);
+        if (amount < 0) ResourceManager.Instance.GetResourcePoolController().PullFromList(transform);
     }
 
     private void UpdateText()

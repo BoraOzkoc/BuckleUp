@@ -19,6 +19,10 @@ public class GoldController : MonoBehaviour
         TeleportTo(transform.position);
     }
 
+    public void TransferGold(Vector3 pos)
+    {
+        transform.DOJump(pos, 2, 1, 0.25f);
+    }
     public void MoveTo(Vector3 pos)
     {
         transform.DOJump(pos, 2, 1, 0.25f).OnComplete(GetPulledToPool);

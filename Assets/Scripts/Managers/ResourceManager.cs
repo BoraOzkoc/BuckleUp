@@ -12,6 +12,7 @@ public class ResourceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _goldText;
     [SerializeField] private ResourcePoolController _resourcePoolController;
     [SerializeField] private Transform _playerPos;
+    [SerializeField] private List<GoldController> spawnedGoldList = new List<GoldController>();
     public enum Type
     {
         Gold,
