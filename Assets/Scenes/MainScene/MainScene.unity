@@ -2521,6 +2521,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AreaManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3655515041969830232, guid: a1d2ee5cd0d94b94280f5da2ec97b457,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.09
+      objectReference: {fileID: 0}
     - target: {fileID: 3796709057119700209, guid: a1d2ee5cd0d94b94280f5da2ec97b457,
         type: 3}
       propertyPath: _ammoCountText
@@ -2591,6 +2596,16 @@ PrefabInstance:
       propertyPath: _ammoCountText
       value: 
       objectReference: {fileID: 983473937}
+    - target: {fileID: 6044137661022805687, guid: a1d2ee5cd0d94b94280f5da2ec97b457,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.3700001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6396676133859364244, guid: a1d2ee5cd0d94b94280f5da2ec97b457,
+        type: 3}
+      propertyPath: _maxSpawn
+      value: 54
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1d2ee5cd0d94b94280f5da2ec97b457, type: 3}
 --- !u!4 &1349587288623179762 stripped

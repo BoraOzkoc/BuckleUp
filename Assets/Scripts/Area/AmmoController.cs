@@ -45,7 +45,6 @@ public class AmmoController : MonoBehaviour, ICollectable
     public void GetCollected(ContainerController containerController)
     {
         containerController.AddAmmo(this);
-        _ammoAnimationController.StopAnimation();
         transform.SetParent(containerController.transform);
         transform.DOLocalJump(Vector3.zero, 1,1,0.25f);
         

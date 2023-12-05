@@ -9,10 +9,7 @@ public class CollectionAreaController : MonoBehaviour
     [SerializeField] private Transform CollectionBackground;
     [Header("Container Controller")] [SerializeField]
     private ContainerController _containerController;
-    private void OnValidate()
-    {
-        CollectionBackground.position = transform.position;
-    }
+   
 
     public ContainerController GetContainerController()
     {

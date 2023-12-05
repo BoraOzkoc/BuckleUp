@@ -37,7 +37,7 @@ public class AmmoCreationArea : AreaController
     [SerializeField] private Image _lockedImage, _golImage;
 
     [Header("Grid Padding")] [SerializeField]
-    private int _padding;
+    private Vector3 _padding;
 
 
     private int x_Count, y_Count, z_Count, _id;
@@ -205,9 +205,9 @@ public class AmmoCreationArea : AreaController
                 }
             }
 
-            SpawnPos.x += _padding * x_Count;
-            SpawnPos.y += _padding * y_Count;
-            SpawnPos.z += _padding * z_Count;
+            SpawnPos.x += _padding.x * x_Count;
+            SpawnPos.y += _padding.y * y_Count;
+            SpawnPos.z += _padding.z * z_Count;
             SpawnAmmo(SpawnPos);
             x_Count++;
         }

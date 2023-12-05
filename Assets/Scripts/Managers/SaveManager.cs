@@ -121,6 +121,8 @@ public class SaveManager : MonoBehaviour
                     SaveList[i].LoadArea(tempObj.IsLocked, tempObj.AmmoAmount);
                 }
             }
+            if (LoadCompleted != null) LoadCompleted();
+
         }
         else
         {
@@ -130,6 +132,8 @@ public class SaveManager : MonoBehaviour
                 if (firstArea)
                 {
                     SaveList[i].SetLock(false);
+                    SaveList[i].PrepareFirstArea();
+
                 }
                 else
                 {
@@ -137,10 +141,8 @@ public class SaveManager : MonoBehaviour
                 }
 
                 SaveList[i].CheckLock();
-                SaveList[i].PrepareFirstArea();
             }
         }
 
-        if (LoadCompleted != null) LoadCompleted();
     }
 }

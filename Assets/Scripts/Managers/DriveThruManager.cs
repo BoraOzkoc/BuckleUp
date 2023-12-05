@@ -33,9 +33,11 @@ public class DriveThruManager : MonoBehaviour
 
     public void StartConvoy()
     {
+        Debug.Log("start convoy called");
         for (int i = 0; i < 3; i++)
         {
             SpawnVehicle();
+            
         }
 
         MoveFirstVehicle();
