@@ -65,7 +65,7 @@ public class ResourcePoolController : MonoBehaviour
         {
             for (int i = 0; i < activatedList.Count; i++)
             {
-                activatedList[i].MoveTo(ammoCollector.transform.position);
+                activatedList[i].MoveTo(ammoCollector);
                 ResetCounts();
             }
         }

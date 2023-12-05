@@ -1554,6 +1554,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3656968499735874609, guid: 46af28fe0e8c0504eb031641e0e09e56,
         type: 3}
+      propertyPath: _spawnSpeed
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3656968499735874609, guid: 46af28fe0e8c0504eb031641e0e09e56,
+        type: 3}
       propertyPath: _lockedImage
       value: 
       objectReference: {fileID: 7835562195858254890}

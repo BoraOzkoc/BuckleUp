@@ -137,6 +137,11 @@ PrefabInstance:
       propertyPath: _padding.x
       value: 0.9
       objectReference: {fileID: 0}
+    - target: {fileID: 5368076834062009312, guid: f78ab9de9ef394746bace0498d268ed8,
+        type: 3}
+      propertyPath: _spawnSpeed
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 8840208254770174790, guid: f78ab9de9ef394746bace0498d268ed8,
         type: 3}
       propertyPath: CollectionBackground
@@ -182,6 +187,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2717143855807875889, guid: 6763dcae59175354ba639507ae604794,
         type: 3}
+      propertyPath: _spawnSpeed
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717143855807875889, guid: 6763dcae59175354ba639507ae604794,
+        type: 3}
       propertyPath: _unlockAmount
       value: 50
       objectReference: {fileID: 0}
@@ -193,7 +203,7 @@ PrefabInstance:
     - target: {fileID: 4709539601614027465, guid: 6763dcae59175354ba639507ae604794,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.3164463
+      value: -2.3700001
       objectReference: {fileID: 0}
     - target: {fileID: 4709539601614027465, guid: 6763dcae59175354ba639507ae604794,
         type: 3}
@@ -285,7 +295,7 @@ PrefabInstance:
     - target: {fileID: 2305928691627930312, guid: 49300bd10f357aa46a10585e2e594654,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.9635538
+      value: 5.09
       objectReference: {fileID: 0}
     - target: {fileID: 2305928691627930312, guid: 49300bd10f357aa46a10585e2e594654,
         type: 3}

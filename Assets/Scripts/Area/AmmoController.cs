@@ -17,7 +17,7 @@ public class AmmoController : MonoBehaviour, ICollectable
         Heavy
     }
 
-    public void PreapareAmmo(int index)
+    public void PrepareAmmo(int index)
     {
         AmmoType = (Type)index;
         ActivateModel();
@@ -46,14 +46,19 @@ public class AmmoController : MonoBehaviour, ICollectable
     {
         containerController.AddAmmo(this);
         transform.SetParent(containerController.transform);
-        transform.DOLocalJump(Vector3.zero, 1,1,0.25f);
+        transform.DOLocalJump(Vector3.zero, 6,1,0.35f).SetEase(Ease.InCubic);
         
     }
 
     public void GetTransferred(Transform parent)
     {
         transform.SetParent(parent);
-        transform.DOLocalMove(Vector3.zero, 0.25f);
+        transform.DOLocalJump(Vector3.zero, 7,1,0.35f).SetEase(Ease.InCubic).OnComplete(DestroyProtocol);
+    }
+
+    private void DestroyProtocol()
+    {
+        Destroy(gameObject);
     }
 
     private void OnValidate()

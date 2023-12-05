@@ -12,6 +12,7 @@ public class AreaController : MonoBehaviour, IInteractable
 {
     public Type AmmoType;
     [SerializeField] private Image _fillImage;
+    [SerializeField] private float _spawnSpeed;
     private bool _playerEntered;
     private Tween _fillTween;
     private Coroutine _timerCoroutine;
@@ -100,7 +101,7 @@ public class AreaController : MonoBehaviour, IInteractable
             bool canLoop = TriggerArea(_ammoCollector);
             if (canLoop)
             {
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(_spawnSpeed);
             }
             else
             {

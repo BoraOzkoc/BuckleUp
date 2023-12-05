@@ -92,7 +92,7 @@ public class AmmoCreationArea : AreaController
 
         int ammoTypeIndex = (int)AmmoType;
 
-        tempAmmo.PreapareAmmo(ammoTypeIndex);
+        tempAmmo.PrepareAmmo(ammoTypeIndex);
         return tempAmmo;
     }
 
@@ -222,7 +222,7 @@ public class AmmoCreationArea : AreaController
 
         int ammoTypeIndex = (int)AmmoType;
 
-        tempAmmo.PreapareAmmo(ammoTypeIndex);
+        tempAmmo.PrepareAmmo(ammoTypeIndex);
     }
 
     public void ResetAmmoList()
