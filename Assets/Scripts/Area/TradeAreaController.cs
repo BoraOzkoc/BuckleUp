@@ -13,7 +13,7 @@ public class TradeAreaController : MonoBehaviour
         _vehicleController = vehicleController;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.TryGetComponent<AmmoCollector>(out AmmoCollector ammoCollector))
         {
@@ -22,11 +22,7 @@ public class TradeAreaController : MonoBehaviour
             int difference = containerController.GetAmmoCount() - _vehicleController.GetOrderAmount();
             if (difference > 0)
             {
-                for (int i = 0; i < _vehicleController.GetOrderAmount(); i++)
-                {
-                    containerController.TransferAmmo(_vehicleController);
-
-                }
+                containerController.TransferAmmo(_vehicleController);
             }
             else if (containerController.GetAmmoCount() == 0)
             {

@@ -7,7 +7,7 @@ public class ResourcePoolController : MonoBehaviour
 {
     [SerializeField] private GoldController _goldPrefab;
     [SerializeField] private int _spawnAmount,x_Count,y_Count,z_Count;
-    [SerializeField] private float _padding;
+    [SerializeField] private Vector3 _padding;
     [SerializeField] private Vector3 _limits;
     [SerializeField] private Transform _spawnLocation;
     private List<GoldController> activatedList = new List<GoldController>();
@@ -52,9 +52,9 @@ public class ResourcePoolController : MonoBehaviour
             }
         }
 
-        SpawnPos.x += _padding * x_Count;
-        SpawnPos.y += _padding * y_Count;
-        SpawnPos.z += _padding * z_Count;
+        SpawnPos.x += _padding.x * x_Count;
+        SpawnPos.y += _padding.y * y_Count;
+        SpawnPos.z += _padding.z * z_Count;
         x_Count++;
         return SpawnPos;
     }

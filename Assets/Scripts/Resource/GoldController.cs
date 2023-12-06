@@ -27,19 +27,23 @@ public class GoldController : MonoBehaviour
     public void MoveTo(AmmoCollector ammoCollector)
     {
         Vector3 startPos = transform.position;
-        float x = Random.Range(-3f, 3f);
+        float x = Random.Range(-2f, 3f);
         float y = Random.Range(1f, 3f);
-        float z = Random.Range(-3f, 3f);
+        float z = Random.Range(-2f, 3f);
         Vector3 targetPos = new Vector3(startPos.x + x, startPos.y + y, startPos.z + z);
 
+        
+        transform.DORotate(Vector3.one * 360, 0.25f, RotateMode.FastBeyond360);
         transform.DOMove(targetPos, 1).OnComplete(() =>
         {
+            transform.DOScale(Vector3.one * 0.2f, 1);
             transform.DOJump(ammoCollector.transform.position, 2, 1, 0.3f).OnComplete(GetPulledToPool);
         });
     }
 
     private void GetPulledToPool()
     {
+        transform.DOKill();
         ResourceManager.Instance.AddGold();
         ResourceManager.Instance.GetResourcePoolController().PushToList(this);
     }

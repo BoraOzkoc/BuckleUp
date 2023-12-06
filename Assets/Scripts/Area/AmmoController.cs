@@ -46,6 +46,7 @@ public class AmmoController : MonoBehaviour, ICollectable
     {
         containerController.AddAmmo(this);
         transform.SetParent(containerController.transform);
+        Debug.Log("get collected called");
         transform.DOLocalJump(Vector3.zero, 6,1,0.35f).SetEase(Ease.InCubic);
         
     }
@@ -58,6 +59,7 @@ public class AmmoController : MonoBehaviour, ICollectable
 
     private void DestroyProtocol()
     {
+        transform.DOKill();
         Destroy(gameObject);
     }
 
