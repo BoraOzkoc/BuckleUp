@@ -27,9 +27,9 @@ public class GoldController : MonoBehaviour
     public void MoveTo(AmmoCollector ammoCollector)
     {
         Vector3 startPos = transform.position;
-        float x = Random.Range(0f, 4f);
+        float x = Random.Range(-3f, 3f);
         float y = Random.Range(1f, 3f);
-        float z = Random.Range(0f, 4f);
+        float z = Random.Range(-3f, 3f);
         Vector3 targetPos = new Vector3(startPos.x + x, startPos.y + y, startPos.z + z);
 
         transform.DOMove(targetPos, 1).OnComplete(() =>
