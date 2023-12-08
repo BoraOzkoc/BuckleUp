@@ -26,11 +26,9 @@ public class VehicleController : MonoBehaviour
         Heavy
     }
 
-    public void CollectAmmo(AmmoController ammoController)
+    public void CollectAmmo(AmmoController ammoController, bool isLastAmmo)
     {
-        ammoController.GetTransferred(transform);
-        ChangeNeededAmmoAmount(-1);
-        if (OrderFinished()) DriveToEnd();
+        ammoController.GetTransferredToVehicle(transform, this, isLastAmmo);
     }
 
     private bool OrderFinished()
@@ -89,13 +87,17 @@ public class VehicleController : MonoBehaviour
     public void ChangeNeededAmmoAmount(int amount)
     {
         _orderAmount += amount;
-        UpdateText();
-        if (amount < 0) ResourceManager.Instance.GetResourcePoolController().PullFromList(transform);
+        
     }
 
-    private void UpdateText()
+    public void UpdateText()
     {
         _textMeshProUGUI.text = "x" + _orderAmount;
+    }
+
+    public void CheckOrderAmount()
+    {
+        if (OrderFinished()) DriveToEnd();
     }
 
     private void ShowOrder()

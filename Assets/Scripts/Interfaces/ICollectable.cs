@@ -5,5 +5,5 @@ using UnityEngine;
 public interface ICollectable
 {
     void GetCollected(ContainerController containerController);
-    void GetTransferred(Transform parent);
+    void GetTransferredToVehicle(Transform parent, VehicleController vehicleController, bool isLastAmmo);
 }

@@ -11,11 +11,20 @@ public class AmmoCollector : MonoBehaviour
         {
             List<AmmoController> tempEmmoList = collectionAreaController.CollectAmmoList();
 
-            for (int i = 0; i < tempEmmoList.Count; i++)
-            {
-                TriggerCollectedAmmo(collectionAreaController.GetContainerController(), tempEmmoList[i]);
-            }
+            StartCoroutine(TransferCoroutine(tempEmmoList, collectionAreaController));
         }
+    }
+
+
+    IEnumerator TransferCoroutine(List<AmmoController> ammoControllerList,
+        CollectionAreaController collectionAreaController)
+    {
+        for (int i = ammoControllerList.Count -1; i >= 0 ; i--)
+        {
+            TriggerCollectedAmmo(collectionAreaController.GetContainerController(), ammoControllerList[i]);
+            yield return new WaitForSeconds(0.01f);
+        }
+
     }
 
     private void TriggerCollectedAmmo(ContainerController containerController, AmmoController ammoController)

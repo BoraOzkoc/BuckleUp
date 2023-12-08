@@ -17,25 +17,25 @@ public class TradeAreaController : MonoBehaviour
     {
         if (other.TryGetComponent<AmmoCollector>(out AmmoCollector ammoCollector))
         {
-            int index = _vehicleController.GetIndex();
-            ContainerController containerController = _containerManager.GetContainer(index);
-            int difference = containerController.GetAmmoCount() - _vehicleController.GetOrderAmount();
-            if (difference > 0)
+            if (_vehicleController.GetOrderAmount() > 0)
             {
-                containerController.TransferAmmo(_vehicleController);
-            }
-            else if (containerController.GetAmmoCount() == 0)
-            {
-                Debug.Log("Container is Empty");
-            }
-            else
-            {
-                for (int i = 0; i < containerController.GetAmmoCount(); i++)
+                int index = _vehicleController.GetIndex();
+                ContainerController containerController = _containerManager.GetContainer(index);
+                int difference = containerController.GetAmmoCount() - _vehicleController.GetOrderAmount();
+                if (difference > 0)
                 {
-                    containerController.TransferAmmo(_vehicleController);
-
+                    containerController.TransferAmmo(_vehicleController, _vehicleController.GetOrderAmount());
+                    _vehicleController.ChangeNeededAmmoAmount(-_vehicleController.GetOrderAmount());
                 }
-                
+                else if (containerController.GetAmmoCount() == 0)
+                {
+                    containerController.TriggerWarning();
+                }
+                else
+                {
+                    containerController.TransferAmmo(_vehicleController, containerController.GetAmmoCount());
+                    _vehicleController.ChangeNeededAmmoAmount(-containerController.GetAmmoCount());
+                }
             }
         }
     }

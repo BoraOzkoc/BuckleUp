@@ -31,16 +31,20 @@ public class ContainerController : MonoBehaviour
         return collectedAmmoList.Count > 0;
     }
 
-    public void TransferAmmo(VehicleController vehicleController)
+    public void TransferAmmo(VehicleController vehicleController, int amount)
     {
-        if (vehicleController.GetOrderAmount() > 0 && GetAmmoCount() > 0)
+        for (int i = 0; i < amount; i++)
         {
             AmmoController removedAmmo = RemoveAmmo(collectedAmmoList[0]);
-            vehicleController.CollectAmmo(removedAmmo);
+            UpdateText();
+            vehicleController.CollectAmmo(removedAmmo, (i == (amount - 1)));
         }
-        UpdateText();
     }
 
+    public void TriggerWarning()
+    {
+        //_ammoCountText.transform.DOShakeScale(0.15f, Vector3.one * 3);
+    }
     public void AddAmmo(AmmoController newAmmo)
     {
         collectedAmmoList.Add(newAmmo);

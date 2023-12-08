@@ -142,6 +142,8 @@ public class SaveManager : MonoBehaviour
 
                 SaveList[i].CheckLock();
             }
+            if (LoadCompleted != null) LoadCompleted();
+
         }
 
     }

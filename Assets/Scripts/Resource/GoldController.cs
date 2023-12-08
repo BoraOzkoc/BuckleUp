@@ -10,6 +10,7 @@ public class GoldController : MonoBehaviour
     public void Activate(Vector3 pos)
     {
         transform.position = pos;
+        transform.localScale = Vector3.one;
         _mesh.SetActive(true);
     }
 
@@ -21,7 +22,7 @@ public class GoldController : MonoBehaviour
 
     public void TransferGold(Vector3 pos)
     {
-        transform.DOJump(pos, 2, 1, 0.25f);
+        transform.DOJump(pos, 2, 1, 0.45f);
     }
 
     public void MoveTo(AmmoCollector ammoCollector)
@@ -33,11 +34,11 @@ public class GoldController : MonoBehaviour
         Vector3 targetPos = new Vector3(startPos.x + x, startPos.y + y, startPos.z + z);
 
         
-        transform.DORotate(Vector3.one * 360, 0.25f, RotateMode.FastBeyond360);
+        transform.DORotate(Vector3.one * 360, 0.5f, RotateMode.FastBeyond360);
         transform.DOMove(targetPos, 1).OnComplete(() =>
         {
-            transform.DOScale(Vector3.one * 0.2f, 1);
-            transform.DOJump(ammoCollector.transform.position, 2, 1, 0.3f).OnComplete(GetPulledToPool);
+            transform.DOScale(Vector3.one * 0.2f, 0.2f);
+            transform.DOMove(ammoCollector.transform.position,0.3f).OnComplete(GetPulledToPool);
         });
     }
 

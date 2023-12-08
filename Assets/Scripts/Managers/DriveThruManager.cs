@@ -44,6 +44,7 @@ public class DriveThruManager : MonoBehaviour
 
     private void SpawnVehicle()
     {
+        Debug.Log("SpawnVehicle called");
         VehicleController spawnedVehicle = _vehicleSpawner.PullFromList(_start, _end);
         spawnedVehicle.Init(this);
         _vehicleList.Add(spawnedVehicle);
