@@ -142,6 +142,11 @@ PrefabInstance:
       propertyPath: _spawnSpeed
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 7518780841618344627, guid: f78ab9de9ef394746bace0498d268ed8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8840208254770174790, guid: f78ab9de9ef394746bace0498d268ed8,
         type: 3}
       propertyPath: CollectionBackground
@@ -180,6 +185,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4440664830415922292}
     m_Modifications:
+    - target: {fileID: 983392653643308622, guid: 6763dcae59175354ba639507ae604794,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2717143855807875889, guid: 6763dcae59175354ba639507ae604794,
         type: 3}
       propertyPath: _padding.x

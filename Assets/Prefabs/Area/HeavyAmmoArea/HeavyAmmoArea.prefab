@@ -1652,6 +1652,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeavyAmmoArea
       objectReference: {fileID: 0}
+    - target: {fileID: 8188746208852926960, guid: 46af28fe0e8c0504eb031641e0e09e56,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1240537e683f0144d87707a020314e2a,
+        type: 3}
     - target: {fileID: 8521251988594592129, guid: 46af28fe0e8c0504eb031641e0e09e56,
         type: 3}
       propertyPath: m_RootOrder

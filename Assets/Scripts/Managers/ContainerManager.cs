@@ -21,18 +21,9 @@ public class ContainerManager : MonoBehaviour
             Instance = this;
         }
     }
-
     
-
     public ContainerController GetContainer(int index)
     {
         return containerList[index];
     }
-
-    public Vector3 GetContainerPos(int index)
-    {
-        return containerList[index].transform.position;
-    }
-
-    
 }
