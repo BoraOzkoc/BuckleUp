@@ -33,13 +33,20 @@ public class ContainerController : MonoBehaviour
 
     public void TransferAmmo(VehicleController vehicleController, int amount)
     {
-        for (int i = 0; i < amount; i++)
+        StartCoroutine(TransferAmmoCoroutine(vehicleController, amount));
+    }
+
+    IEnumerator TransferAmmoCoroutine(VehicleController vehicleController,int loopCount)
+    {
+        for (int i = 0; i < loopCount; i++)
         {
             AmmoController removedAmmo = RemoveAmmo(collectedAmmoList[0]);
             UpdateText();
-            vehicleController.CollectAmmo(removedAmmo, (i == (amount - 1)));
+            vehicleController.CollectAmmo(removedAmmo, (i == (loopCount - 1)));
+            yield return new WaitForSeconds(0.1f);
         }
     }
+    
 
     public void TriggerWarning()
     {

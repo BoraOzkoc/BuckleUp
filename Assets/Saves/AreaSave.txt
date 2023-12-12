@@ -1,1 +1,1 @@
-{"AreaData":[{"IsLocked":false,"AmmoAmount":0},{"IsLocked":false,"AmmoAmount":2},{"IsLocked":true,"AmmoAmount":0}]}
+{"AreaData":[{"IsLocked":false,"AmmoAmount":0},{"IsLocked":false,"AmmoAmount":17},{"IsLocked":true,"AmmoAmount":0}]}

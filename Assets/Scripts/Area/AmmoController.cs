@@ -22,8 +22,14 @@ public class AmmoController : MonoBehaviour, ICollectable
     {
         AmmoType = (Type)index;
         ActivateModel();
+        PlaySpawnAnimation();
     }
-
+    public void PlaySpawnAnimation()
+    {
+        Vector3 startScale = transform.localScale;
+        transform.localScale = Vector3.zero;
+        transform.DOScale(startScale, 0.40f).SetEase(Ease.OutBounce);
+    }
     private void Awake()
     {
         _ammoAnimationController = GetComponent<AmmoAnimationController>();
