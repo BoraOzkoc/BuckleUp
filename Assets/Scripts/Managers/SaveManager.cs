@@ -132,7 +132,6 @@ public class SaveManager : MonoBehaviour
                 if (firstArea)
                 {
                     SaveList[i].SetLock(false);
-                    SaveList[i].PrepareFirstArea();
 
                 }
                 else

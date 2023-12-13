@@ -9,6 +9,7 @@ public class AmmoController : MonoBehaviour, ICollectable
 {
     public Type AmmoType;
     [SerializeField] private List<GameObject> _modelList = new List<GameObject>();
+    [SerializeField] private ParticleSystem _spawnEffect;
     private AmmoAnimationController _ammoAnimationController;
 
     public enum Type
@@ -23,6 +24,7 @@ public class AmmoController : MonoBehaviour, ICollectable
         AmmoType = (Type)index;
         ActivateModel();
         PlaySpawnAnimation();
+        PlaySpawnEffect();
     }
 
     public void PlaySpawnAnimation()
@@ -37,6 +39,10 @@ public class AmmoController : MonoBehaviour, ICollectable
         _ammoAnimationController = GetComponent<AmmoAnimationController>();
     }
 
+    private void PlaySpawnEffect()
+    {
+        _spawnEffect.Play();
+    }
     private void ActivateModel()
     {
         for (int i = 0; i < _modelList.Count; i++)

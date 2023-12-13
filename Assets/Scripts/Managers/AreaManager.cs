@@ -21,11 +21,13 @@ public class AreaManager : MonoBehaviour
     private void OnEnable()
     {
         SaveManager.LoadCompleted += TriggerVehicles;
+        SaveManager.LoadCompleted += TriggerAreas;
     }
 
     private void OnDisable()
     {
         SaveManager.LoadCompleted -= TriggerVehicles;
+        SaveManager.LoadCompleted -= TriggerAreas;
     }
 
     public AreaOrderController GetAreaOrderController()
@@ -74,6 +76,13 @@ public class AreaManager : MonoBehaviour
         _driveThruManager.StartConvoy();
     }
 
+    private void TriggerAreas()
+    {
+        for (int i = 0; i < areaList.Count; i++)
+        {
+            areaList[i].GetContainerController().UpdateText();
+        }
+    }
     private bool AllAreasLoaded()
     {
         bool allLoaded = true;

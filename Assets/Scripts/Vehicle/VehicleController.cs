@@ -80,15 +80,14 @@ public class VehicleController : MonoBehaviour
     {
         int orderCount = Random.Range(1, 6);
         _orderAmount = orderCount * ((int)VehicleType + 1);
+
         ShowOrder();
         _tradeAreaController.SetVehicle(this);
-
     }
 
     public void ChangeNeededAmmoAmount(int amount)
     {
         _orderAmount += amount;
-        
     }
 
     public void UpdateText()
@@ -130,7 +129,6 @@ public class VehicleController : MonoBehaviour
 
     private void DriveToEnd()
     {
-        
         HideOrder();
         transform.DOMove(_endPos.position, 2).SetEase(Ease.InOutQuart).OnComplete(CompleteOrder);
     }

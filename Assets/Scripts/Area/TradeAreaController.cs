@@ -17,24 +17,29 @@ public class TradeAreaController : MonoBehaviour
     {
         if (other.TryGetComponent<AmmoCollector>(out AmmoCollector ammoCollector))
         {
-            if (_vehicleController.GetOrderAmount() > 0)
+            int vehicleNeededAmmoCount = _vehicleController.GetOrderAmount();
+            if (vehicleNeededAmmoCount > 0)
             {
                 int index = _vehicleController.GetIndex();
                 ContainerController containerController = _containerManager.GetContainer(index);
-                int difference = containerController.GetAmmoCount() - _vehicleController.GetOrderAmount();
-                if (difference > 0)
+                int containerCount = containerController.GetAmmoCount();
+
+                if (containerCount > 0)
                 {
-                    containerController.TransferAmmo(_vehicleController, _vehicleController.GetOrderAmount());
-                    _vehicleController.ChangeNeededAmmoAmount(-_vehicleController.GetOrderAmount());
-                }
-                else if (containerController.GetAmmoCount() == 0)
-                {
-                    containerController.TriggerWarning();
-                }
-                else
-                {
-                    containerController.TransferAmmo(_vehicleController, containerController.GetAmmoCount());
-                    _vehicleController.ChangeNeededAmmoAmount(-containerController.GetAmmoCount());
+                    if (containerController.GetAmmoCount() > vehicleNeededAmmoCount)
+                    {
+                        containerController.TransferAmmo(_vehicleController, vehicleNeededAmmoCount);
+                        _vehicleController.ChangeNeededAmmoAmount(-vehicleNeededAmmoCount);
+                    }
+                    else if (containerController.GetAmmoCount() == 0)
+                    {
+                        containerController.TriggerWarning();
+                    }
+                    else
+                    {
+                        containerController.TransferAmmo(_vehicleController, containerCount);
+                        _vehicleController.ChangeNeededAmmoAmount(-containerCount);
+                    }
                 }
             }
         }

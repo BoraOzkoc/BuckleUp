@@ -50,11 +50,21 @@ public class ContainerController : MonoBehaviour
 
     IEnumerator TransferAmmoCoroutine(VehicleController vehicleController, int loopCount)
     {
+        List<AmmoController> removedAmmoList = new List<AmmoController>();
         for (int i = 0; i < loopCount; i++)
         {
-            AmmoController removedAmmo = RemoveAmmo(collectedAmmoList[0]);
-            UpdateText();
-            vehicleController.CollectAmmo(removedAmmo, (i == (loopCount - 1)));
+            if (collectedAmmoList.Count > 0)
+            {
+                AmmoController removedAmmo = RemoveAmmo(collectedAmmoList[0]);
+                removedAmmoList.Add(removedAmmo);
+                UpdateText();
+                // vehicleController.CollectAmmo(removedAmmo, (i == (loopCount - 1)));
+            }
+        }
+
+        for (int i = 0; i < removedAmmoList.Count; i++)
+        {
+            vehicleController.CollectAmmo(removedAmmoList[i],i == (removedAmmoList.Count - 1));
             yield return new WaitForSeconds(0.1f);
         }
     }
@@ -63,7 +73,7 @@ public class ContainerController : MonoBehaviour
     {
         _bounceTween?.Kill();
         transform.localScale = _startScale;
-        _bounceTween = transform.DOScale(_startScale * 1.2f, 0.07f).SetLoops(2,LoopType.Yoyo).OnComplete(() =>
+        _bounceTween = transform.DOScale(_startScale * 1.2f, 0.07f).SetLoops(2, LoopType.Yoyo).OnComplete(() =>
         {
             transform.localScale = _startScale;
         });
@@ -80,7 +90,7 @@ public class ContainerController : MonoBehaviour
         UpdateText();
     }
 
-    private void UpdateText()
+    public void UpdateText()
     {
         _ammoCountText.text = "x" + collectedAmmoList.Count.ToString();
     }

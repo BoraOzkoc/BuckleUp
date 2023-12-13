@@ -6,14 +6,18 @@ using UnityEngine;
 public class GoldController : MonoBehaviour
 {
     [SerializeField] private GameObject _mesh;
-
+    private ResourcePoolController _resourcePoolController;
     public void Activate(Vector3 pos)
     {
         transform.position = pos;
         transform.localScale = Vector3.one;
         _mesh.SetActive(true);
     }
-    
+
+    public void SetPoolController(ResourcePoolController resourcePoolController)
+    {
+        _resourcePoolController = resourcePoolController;
+    }
     public void Deactivate()
     {
         _mesh.SetActive(false);
@@ -22,7 +26,12 @@ public class GoldController : MonoBehaviour
 
     public void TransferGold(Vector3 pos)
     {
-        transform.DOJump(pos, 2, 1, 0.45f);
+        transform.DOJump(pos, 2, 1, 0.45f).OnComplete(() =>
+        {
+        _resourcePoolController.CheckActiveGoldCount();
+
+        });
+        
     }
 
     public void MoveTo(AmmoCollector ammoCollector)
