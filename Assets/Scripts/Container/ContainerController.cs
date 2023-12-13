@@ -11,6 +11,13 @@ public class ContainerController : MonoBehaviour
     [SerializeField] private AmmoCreationArea _ammoCreationArea;
     private List<AmmoController> collectedAmmoList = new List<AmmoController>();
     [SerializeField] private TextMeshProUGUI _ammoCountText;
+    private Tween _bounceTween;
+    private Vector3 _startScale;
+
+    private void Awake()
+    {
+        SetScale();
+    }
 
     private void Start()
     {
@@ -26,6 +33,11 @@ public class ContainerController : MonoBehaviour
         }
     }
 
+    private void SetScale()
+    {
+        _startScale = transform.localScale;
+    }
+
     public bool GotAmmo()
     {
         return collectedAmmoList.Count > 0;
@@ -36,7 +48,7 @@ public class ContainerController : MonoBehaviour
         StartCoroutine(TransferAmmoCoroutine(vehicleController, amount));
     }
 
-    IEnumerator TransferAmmoCoroutine(VehicleController vehicleController,int loopCount)
+    IEnumerator TransferAmmoCoroutine(VehicleController vehicleController, int loopCount)
     {
         for (int i = 0; i < loopCount; i++)
         {
@@ -46,12 +58,22 @@ public class ContainerController : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
     }
-    
+
+    public void PlayBounceAnim()
+    {
+        _bounceTween?.Kill();
+        transform.localScale = _startScale;
+        _bounceTween = transform.DOScale(_startScale * 1.2f, 0.07f).SetLoops(2,LoopType.Yoyo).OnComplete(() =>
+        {
+            transform.localScale = _startScale;
+        });
+    }
 
     public void TriggerWarning()
     {
         //_ammoCountText.transform.DOShakeScale(0.15f, Vector3.one * 3);
     }
+
     public void AddAmmo(AmmoController newAmmo)
     {
         collectedAmmoList.Add(newAmmo);

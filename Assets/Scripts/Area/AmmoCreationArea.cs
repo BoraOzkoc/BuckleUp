@@ -91,6 +91,7 @@ public class AmmoCreationArea : AreaController
             Instantiate(_ammoPrefab, pos, Quaternion.identity, _spawnLocation);
 
         int ammoTypeIndex = (int)AmmoType;
+        tempAmmo.Hide();
 
         tempAmmo.PrepareAmmo(ammoTypeIndex);
         return tempAmmo;
