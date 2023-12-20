@@ -25,6 +25,7 @@ public static class SaveSystem
 
     public static string Load(string name)
     {
+        Debug.Log("save folder : "+ SAVE_FOLDER);
         DirectoryInfo directoryInfo = new DirectoryInfo(SAVE_FOLDER);
         // Get all save files
         FileInfo[] saveFiles = directoryInfo.GetFiles("*." + SAVE_EXTENSION);

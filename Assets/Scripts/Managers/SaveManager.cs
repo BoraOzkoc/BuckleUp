@@ -89,7 +89,7 @@ public class SaveManager : MonoBehaviour
     {
         string areaSaveString = SaveSystem.Load(_areaSaveName);
         string resourceSaveString = SaveSystem.Load(_reSourceSaveName);
-
+        Application.targetFrameRate = 60;
         LoadAreas(areaSaveString);
         LoadResources(resourceSaveString);
     }
@@ -113,7 +113,6 @@ public class SaveManager : MonoBehaviour
                 AreaList itemList = JsonUtility.FromJson<AreaList>(saveString);
                 areaList.AreaData = itemList.AreaData;
 
-
                 for (int i = 0; i < SaveList.Count; i++)
                 {
                     AmmoCreationArea.SaveData tempObj = areaList.AreaData[i];
@@ -121,8 +120,6 @@ public class SaveManager : MonoBehaviour
                     SaveList[i].LoadArea(tempObj.IsLocked, tempObj.AmmoAmount);
                 }
             }
-            if (LoadCompleted != null) LoadCompleted();
-
         }
         else
         {
@@ -132,7 +129,6 @@ public class SaveManager : MonoBehaviour
                 if (firstArea)
                 {
                     SaveList[i].SetLock(false);
-
                 }
                 else
                 {
@@ -141,9 +137,8 @@ public class SaveManager : MonoBehaviour
 
                 SaveList[i].CheckLock();
             }
-            if (LoadCompleted != null) LoadCompleted();
-
         }
+        LoadCompleted?.Invoke();
 
     }
 }
