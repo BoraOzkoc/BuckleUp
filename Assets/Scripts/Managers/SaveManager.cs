@@ -58,6 +58,7 @@ public class SaveManager : MonoBehaviour
             SaveResource();
         }
     }
+    
 
     private void Start()
     {

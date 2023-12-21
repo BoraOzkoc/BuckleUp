@@ -5,9 +5,13 @@ using UnityEngine;
 
 public static class SaveSystem
 {
-    private static readonly string SAVE_FOLDER = Application.dataPath + "/Saves/";
+    private static string SAVE_FOLDER = Application.persistentDataPath + "/Saves";
     private const string SAVE_EXTENSION = "txt";
 
+    public static void Awake()
+    {
+       
+    }
     public static void Init()
     {
         // Test if Save Folder exists
@@ -15,26 +19,32 @@ public static class SaveSystem
         {
             // Create Save Folder
             Directory.CreateDirectory(SAVE_FOLDER);
+            
         }
     }
 
     public static void Save(string saveString, string saveName)
     {
-        File.WriteAllText(SAVE_FOLDER + saveName + "." + SAVE_EXTENSION, saveString);
+        File.WriteAllText(SAVE_FOLDER , saveString);
+        // Path.Combine(SAVE_FOLDER, "objects.xml")
     }
 
     public static string Load(string name)
     {
+        Init();
         Debug.Log("save folder : "+ SAVE_FOLDER);
         DirectoryInfo directoryInfo = new DirectoryInfo(SAVE_FOLDER);
         // Get all save files
-        FileInfo[] saveFiles = directoryInfo.GetFiles("*." + SAVE_EXTENSION);
+        FileInfo[] saveFiles = directoryInfo.GetFiles("*.");
         // Cycle through all save files and identify the most recent one
-        FileInfo mostRecentFile = null;
         foreach (FileInfo fileInfo in saveFiles)
         {
             string fileName = fileInfo.Name;
             string test = name + "." + SAVE_EXTENSION;
+            Debug.Log("------------");
+            Debug.Log("fileName : " + fileName);
+            Debug.Log("test : "+ test);
+            Debug.Log("-----------");
             if (Equals(fileName, test))
             {
                 string saveString = File.ReadAllText(directoryInfo + fileInfo.Name);
