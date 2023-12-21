@@ -5,12 +5,12 @@ using UnityEngine;
 
 public static class SaveSystem
 {
-    private static string SAVE_FOLDER = Application.persistentDataPath + "/Saves";
-    private const string SAVE_EXTENSION = "txt";
+    private static string SAVE_FOLDER = Application.persistentDataPath + "/Saves/";
+    private const string SAVE_EXTENSION = ".txt";
 
     public static void Awake()
     {
-       
+
     }
     public static void Init()
     {
@@ -19,31 +19,30 @@ public static class SaveSystem
         {
             // Create Save Folder
             Directory.CreateDirectory(SAVE_FOLDER);
-            
+
         }
     }
 
     public static void Save(string saveString, string saveName)
     {
-        File.WriteAllText(SAVE_FOLDER , saveString);
-        // Path.Combine(SAVE_FOLDER, "objects.xml")
+        File.WriteAllText(SAVE_FOLDER + saveName + SAVE_EXTENSION, saveString);
     }
 
     public static string Load(string name)
     {
         Init();
-        Debug.Log("save folder : "+ SAVE_FOLDER);
+        Debug.Log("save folder : " + SAVE_FOLDER);
         DirectoryInfo directoryInfo = new DirectoryInfo(SAVE_FOLDER);
         // Get all save files
-        FileInfo[] saveFiles = directoryInfo.GetFiles("*.");
+        FileInfo[] saveFiles = directoryInfo.GetFiles();
         // Cycle through all save files and identify the most recent one
         foreach (FileInfo fileInfo in saveFiles)
         {
             string fileName = fileInfo.Name;
-            string test = name + "." + SAVE_EXTENSION;
+            string test = name + SAVE_EXTENSION;
             Debug.Log("------------");
             Debug.Log("fileName : " + fileName);
-            Debug.Log("test : "+ test);
+            Debug.Log("test : " + test);
             Debug.Log("-----------");
             if (Equals(fileName, test))
             {

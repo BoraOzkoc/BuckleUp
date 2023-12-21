@@ -9,10 +9,10 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using NaughtyAttributes;
 
 public class SaveManager : MonoBehaviour
 {
-    
     [System.Serializable]
     public class AreaList
     {
@@ -26,8 +26,9 @@ public class SaveManager : MonoBehaviour
     }
 
     public delegate void LoadCompletedEvent();
+
     public static event LoadCompletedEvent LoadCompleted;
-    
+
     public static SaveManager Instance;
 
 
@@ -36,6 +37,7 @@ public class SaveManager : MonoBehaviour
     [SerializeField] private ResourceManager _resourceManager;
     private string _areaSaveName = "AreaSave", _reSourceSaveName = "ResourceSave";
     private Resource _resource = new Resource();
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -54,11 +56,17 @@ public class SaveManager : MonoBehaviour
     {
         if (!hasFocus)
         {
-            SaveAreas();
-            SaveResource();
+            // SaveAreas();
+            // SaveResource();
         }
     }
-    
+
+    [Button]
+    public void TestSave()
+    {
+        SaveAreas();
+        SaveResource();
+    }
 
     private void Start()
     {
@@ -139,7 +147,7 @@ public class SaveManager : MonoBehaviour
                 SaveList[i].CheckLock();
             }
         }
-        LoadCompleted?.Invoke();
 
+        LoadCompleted?.Invoke();
     }
 }
