@@ -7,6 +7,8 @@ public class UIVirtualTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandl
     [System.Serializable]
     public class Event : UnityEvent<Vector2> { }
 
+    [Header("Anolog")]
+    public RectTransform AnalogImage;
     [Header("Rect References")]
     public RectTransform containerRect;
     public RectTransform handleRect;
@@ -51,7 +53,6 @@ public class UIVirtualTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandl
 
     public void OnDrag(PointerEventData eventData)
     {
-
         RectTransformUtility.ScreenPointToLocalPointInRectangle(containerRect, eventData.position, eventData.pressEventCamera, out currentPointerPosition);
         
         Vector2 positionDelta = GetDeltaBetweenPositions(pointerDownPosition, currentPointerPosition);
@@ -59,6 +60,14 @@ public class UIVirtualTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandl
         Vector2 clampedPosition = ClampValuesToMagnitude(positionDelta);
         
         Vector2 outputPosition = ApplyInversionFilter(clampedPosition);
+
+        //Debug.Log(positionDelta);
+       //Debug.Log(clampedPosition);
+        Debug.Log(outputPosition);
+
+        Vector2 test = new Vector2(containerRect.position.x, containerRect.position.y) + outputPosition;
+
+        AnalogImage.localPosition = test;
 
         OutputPointerEventValue(outputPosition * magnitudeMultiplier);
     }

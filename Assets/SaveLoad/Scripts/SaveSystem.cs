@@ -31,7 +31,6 @@ public static class SaveSystem
     public static string Load(string name)
     {
         Init();
-        Debug.Log("save folder : " + SAVE_FOLDER);
         DirectoryInfo directoryInfo = new DirectoryInfo(SAVE_FOLDER);
         // Get all save files
         FileInfo[] saveFiles = directoryInfo.GetFiles();
@@ -40,10 +39,7 @@ public static class SaveSystem
         {
             string fileName = fileInfo.Name;
             string test = name + SAVE_EXTENSION;
-            Debug.Log("------------");
-            Debug.Log("fileName : " + fileName);
-            Debug.Log("test : " + test);
-            Debug.Log("-----------");
+            
             if (Equals(fileName, test))
             {
                 string saveString = File.ReadAllText(directoryInfo + fileInfo.Name);
